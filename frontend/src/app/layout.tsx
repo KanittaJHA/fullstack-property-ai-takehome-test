@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${thai.variable}`}>
+    <html lang="en" data-theme="dark" style={{ colorScheme: "dark" }} className={`${poppins.variable} ${thai.variable}`}>
       <body>
         <WorkspaceProvider>
           <a className="skip-link" href="#main-content">

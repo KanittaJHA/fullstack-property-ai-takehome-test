@@ -16,7 +16,7 @@ import { recordPath } from "./navigation-history";
 import { readSaved, subscribeSaved, toggleSaved, serverSaved, parseSaved } from "@/features/properties/saved-properties";
 type Locale = "en" | "th";
 type Theme = "light" | "dark" | "rainbow";
-let currentTheme: Theme = "light";
+let currentTheme: Theme = "dark";
 function readTheme(): Theme {
   try {
     const saved = localStorage.getItem("property-theme");
@@ -44,7 +44,7 @@ function setTheme(theme: Theme) {
   }
   window.dispatchEvent(new Event("property-theme-change"));
 }
-const serverTheme = (): Theme => "light";
+const serverTheme = (): Theme => "dark";
 const WorkspaceContext = createContext<{
   theme: Theme;
   setTheme: (theme: Theme) => void;
