@@ -9,3 +9,13 @@ __pycache__/
 *.pyc
 venv/
 .venv/
+
+# Private configuration in either application
+.env.*
+!.env.example
+.next*/
+*.tsbuildinfo
+
+# Private conversation database, including WAL and SHM files
+.private/
+

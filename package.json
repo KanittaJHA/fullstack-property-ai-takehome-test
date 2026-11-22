@@ -1,0 +1,20 @@
+{
+  "name": "fullstack-takehome",
+  "private": true,
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "setup": "npm ci --prefix frontend && npm ci --prefix backend",
+    "dev": "node scripts/dev.mjs",
+    "check": "npm run check:architecture && npm run test:automation && npm run check --prefix backend && npm run check --prefix frontend",
+    "build": "npm run build --prefix backend && npm run build --prefix frontend",
+    "test:listings": "npm run test:listings --prefix backend",
+    "test:business": "npm run test:business --prefix backend",
+    "check:architecture": "node scripts/check-architecture.mjs",
+    "test:automation": "node automation/tests/workflow-structure.test.mjs && node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON automation/tests/workflow-nodes.test.mjs",
+    "test:automation:db": "node --env-file=backend/.env.local automation/tests/database.test.mjs",
+    "test:automation:ai": "node --env-file=backend/.env.local automation/tests/ai-scoring-live.mjs",
+    "test:automation:live": "node --env-file=backend/.env.local automation/tests/webhook-live.test.mjs"
+  }
+}
