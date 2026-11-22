@@ -1,0 +1,39 @@
+/* Stat card icons (admin inbox and leads): a neutral tile that blends with each theme.
+   The category colour stays on the status dot next to the label. */
+.admin-stat .admin-stat-icon { color: var(--foreground); background: #eceef3; }
+:root[data-theme="dark"] .admin-stat .admin-stat-icon { color: #fff; background: #000; box-shadow: inset 0 0 0 1px #ffffff1f; }
+:root[data-theme="rainbow"] .admin-stat .admin-stat-icon { color: var(--foreground); background: var(--blue-soft); }
+/* Card arrow follows the theme's text colour: near-black in light, white in dark. */
+.admin-stat .admin-stat-description svg { color: var(--foreground); }
+:root[data-theme="dark"] .admin-stat .admin-stat-description svg { color: #fff; }
+/* Slightly larger card text: label, unit and description. */
+.admin-stat .admin-status, .admin-stat small, .admin-stat .admin-stat-description { font-size: 12px; }
+/* Refresh and Open customer chat: icon-only on narrow screens so the header actions fit.
+   The chat icon stays on every phone width: it is the direct way back to the customer chat. */
+@media (max-width: 760px) {
+  .admin-compact-action > span { display: none; }
+  .admin-compact-action { padding-inline: 11px; }
+  .admin-page-heading .workspace-heading-actions { gap: 8px; }
+}
+@media (max-width: 400px) { .admin-page-heading .workspace-heading-actions { gap: 6px; } }
+/* Very narrow phones: the inbox already refreshes every 4 seconds, so the Refresh button can go. */
+@media (max-width: 379px) { .admin-page-heading .workspace-heading-actions > .admin-compact-action:not(.admin-chat-link) { display: none; } }
+/* Phones up to 460px: Lock workspace becomes an icon too, so the one-line labels never push the page sideways. */
+@media (max-width: 460px) {
+  .admin-lock-action > span { display: none; }
+  .admin-lock-action { padding-inline: 11px; }
+}
+
+/* Small screens (admin inbox and leads): the "Overview" toggle sits at the right of the heading actions
+   and folds the stat cards away until it is opened. */
+@media (max-width: 760px) {
+  .admin-page-heading .workspace-heading-actions { width: 100%; justify-content: flex-start; flex-wrap: nowrap; }
+  .admin-page-heading .workspace-heading-actions > .admin-stats-toggle { margin-left: auto; }
+  .admin-stats-toggle > svg:last-child { transform: rotate(90deg); transition: transform 150ms ease; }
+  .admin-stats-toggle.open > svg:last-child { transform: rotate(-90deg); }
+}
+.admin-stats-toggle { display: none; }
+@media (max-width: 760px) {
+  .admin-page-heading .workspace-heading-actions > .admin-stats-toggle { display: inline-flex; }
+  .admin-stats:not(.open) { display: none; }
+}

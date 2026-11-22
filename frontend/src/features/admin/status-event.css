@@ -1,0 +1,88 @@
+.admin-status-event {
+  --event-accent: #8490a3;
+  display: flex;
+  align-items: flex-start;
+  align-self: flex-end;
+  gap: 10px;
+  width: fit-content;
+  max-width: 88%;
+  padding: 10px 14px;
+  border: 1px solid color-mix(in srgb, var(--theme-border, #e9edf3) 65%, var(--event-accent));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--theme-surface, white) 91%, var(--event-accent));
+  color: var(--theme-text, #505c6e);
+}
+.admin-status-event.waiting { --event-accent: #c28a2f; }
+.admin-status-event.active { --event-accent: #6387df; }
+.admin-status-event.resolved { --event-accent: #32a16d; }
+.admin-status-event > svg { flex-shrink: 0; margin-top: 2px; color: var(--event-accent); }
+.admin-status-event-label { font-size: 11px; font-weight: 500; }
+.admin-status-event p { margin: 3px 0 0; font-size: 13px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.admin-status-event > div { min-width: 0; }
+@media (max-width: 760px) {
+  .admin-status-event { max-width: 96%; }
+}
+
+.admin-actions > .admin-secondary.admin-support-active {
+  border: 0;
+  box-shadow: none;
+  background: #15803d;
+  color: #fff;
+}
+
+.admin-actions > .admin-secondary {
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px var(--border);
+  height: 40px;
+  min-height: 40px;
+  padding-block: 0;
+  line-height: 1.5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-actions > button.admin-secondary:hover {
+  box-shadow: inset 0 0 0 1px var(--blue);
+}
+
+/* A closed conversation ends the timeline with a quiet, centered notice. */
+.admin-status-event.resolved {
+  align-self: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 8px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--theme-text-muted, #8b9099);
+  text-align: center;
+}
+.admin-status-event.resolved > svg,
+.admin-status-event.resolved .admin-status-event-label {
+  display: none;
+}
+.admin-status-event.resolved p,
+.admin-status-event.resolved time {
+  margin: 0;
+  color: inherit;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.admin-status-event.resolved time {
+  display: block;
+  margin-top: 4px;
+}
+
+/* The handover card matches the customer's card (handover-event.css): same text, spacing and type. */
+.admin-status-event.admin-handover-event { padding: 12px 16px; width: min(100%, 440px); max-width: 100%; }
+.admin-handover-event > svg { color: #c28a2f; }
+.admin-handover-event h3 { margin: 0; font-size: 14px; font-weight: 600; line-height: 1.5; color: var(--foreground); }
+.admin-handover-event p { margin: 3px 0 6px; font-size: 13px; line-height: 1.5; color: var(--theme-text, #687286); white-space: normal; }
+.admin-handover-event time { display: block; font-size: 11px; line-height: 1.5; }

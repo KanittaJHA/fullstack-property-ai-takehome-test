@@ -1,0 +1,65 @@
+.admin-chat-group .admin-queue-item .conversation-item-copy {
+  flex: 1;
+  min-width: 0;
+  padding-inline-start: 8px;
+}
+.admin-chat-group .admin-queue-item .conversation-item-copy strong {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.admin-queue-row { position: relative; }
+.admin-chat-group .admin-queue-row .admin-queue-item { padding-inline-end: 42px; }
+.admin-pin-button {
+  position: absolute;
+  inset-inline-end: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  color: var(--muted);
+}
+.admin-pin-button svg { transform: rotate(35deg); }
+.admin-pin-button[aria-pressed="true"] { color: var(--blue); }
+.admin-pin-button:hover { background: var(--theme-surface-soft); }
+.admin-pin-button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+/* Loading and empty states sit in the middle of their panel instead of the top-left corner. */
+.admin-queue-list > .admin-empty { text-align: center; padding: 48px 16px; }
+.admin-conversation > .admin-conversation-empty { flex: 1; display: grid; place-items: center; min-height: 320px; margin: 0; padding: 24px; text-align: center; font-size: 13px; }
+
+/* Small screens: the inbox is a slide-in drawer over the page, like the customer chat
+   history. Opened from the conversation header; closed by the backdrop, Escape, its
+   close button, or choosing a conversation. */
+.admin-inbox-toggle, .admin-drawer-close { display: grid; place-items: center; flex-shrink: 0; width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 10px; color: var(--foreground); background: var(--theme-surface, #fff); }
+.admin-drawer-close { width: 34px; height: 34px; border-radius: 9px; }
+.admin-inbox-toggle { display: none; height: auto; align-self: stretch; min-height: 38px; width: 42px; }
+@media (max-width: 760px) {
+  .admin-inbox > .admin-queue {
+    position: fixed; inset: 0 auto 0 0; z-index: 130;
+    width: min(320px, 86vw); height: 100dvh; max-height: none;
+    padding: 18px 16px 20px; overflow-y: auto; overscroll-behavior: contain;
+    border-right: 1px solid var(--border); border-bottom: 0;
+    background: var(--theme-surface, #fff); box-shadow: 12px 0 40px #0003;
+    transform: translateX(-105%); visibility: hidden;
+    transition: transform 220ms ease, visibility 0s linear 220ms;
+  }
+  .admin-inbox.drawer-open > .admin-queue { transform: none; visibility: visible; transition: transform 220ms ease; }
+  /* The drawer scrolls as a whole; its sections keep their natural height instead of overlapping. */
+  .admin-inbox > .admin-queue > * { flex-shrink: 0; }
+  .admin-queue-heading h2 { display: flex; align-items: center; gap: 10px; }
+  .admin-drawer-backdrop { position: fixed; inset: 0; z-index: 125; padding: 0; border: 0; background: #0008; cursor: default; }
+  .admin-page-heading .workspace-heading-actions > .admin-inbox-toggle { display: grid; }
+}
+@media (max-width: 760px) and (prefers-reduced-motion: reduce) {
+  .admin-inbox > .admin-queue, .admin-inbox.drawer-open > .admin-queue { transition: none; }
+}
+
+
+/* Selected conversation: background highlight only, no coloured left edge. */
+.admin-queue-item.selected { box-shadow: none; }

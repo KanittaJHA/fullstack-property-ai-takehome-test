@@ -1,0 +1,6 @@
+/* One dot size (9px) for every status dot on the admin inbox and leads pages. */
+.admin-status { gap: 8px; }
+.admin-status::before { width: 9px; height: 9px; flex-shrink: 0; }
+.admin-queue .conversation-group-dot { width: 9px; height: 9px; flex-shrink: 0; }
+.admin-account-session { gap: 8px; }
+.admin-account-session > span { width: 9px; height: 9px; flex-shrink: 0; }
