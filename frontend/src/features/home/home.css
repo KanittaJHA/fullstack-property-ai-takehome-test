@@ -64,7 +64,7 @@ html[lang="th"] .home-hero h1 { font-size: clamp(38px, 5vw, 90px); line-height: 
 .home-page { --home-ribbon-width: 52px; }
 /* Both ribbons use the same on-screen width whatever each drawing's scale, so they read as one ribbon. */
 .home-ribbon path { fill: none; stroke: var(--home-accent); stroke-width: var(--home-ribbon-width); stroke-linecap: round; vector-effect: non-scaling-stroke; }
-.home-ribbon text { fill: var(--home-ribbon-ink); font: 500 19px ui-monospace, "SFMono-Regular", Menlo, monospace; letter-spacing: .06em; dominant-baseline: middle; }
+.home-ribbon text { fill: var(--home-ribbon-ink); font-size: 19px; font-weight: 500; letter-spacing: .04em; dominant-baseline: middle; }
 
 /* Three entry cards. */
 .home-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 22px); }
@@ -213,7 +213,7 @@ html[lang="th"] .home-page section h2 { line-height: 1.25; letter-spacing: -.01e
 .home-closing-art > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 /* Filled outlines (see ribbon-shape.ts); a hairline stroke hides the seams between pieces. */
 .home-closing-ribbon { fill: var(--home-accent); stroke: var(--home-accent); stroke-width: 1; stroke-linejoin: round; }
-.home-closing-art text { fill: var(--home-ribbon-ink); font: 500 24px ui-monospace, "SFMono-Regular", Menlo, monospace; letter-spacing: .05em; dominant-baseline: middle; }
+.home-closing-art text { fill: var(--home-ribbon-ink); font-size: 24px; font-weight: 500; letter-spacing: .04em; dominant-baseline: middle; }
 .home-closing-art .home-closing-loop-text { font-size: 21px; }
 .home-closing-copy { position: absolute; left: 50%; top: 24%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; }
 .home-dark-button { align-self: center; padding: 11px 20px; background: #16202c; color: #fff; }
