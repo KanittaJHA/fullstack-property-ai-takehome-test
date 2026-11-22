@@ -1,0 +1,324 @@
+/* Task 3: contact form (/contact) and team lead list (/leads). Uses the shared theme tokens. */
+.lead-page, .leads-page {
+  --lead-hot: #e05a4f;
+  --lead-warm: #d9902a;
+  --lead-cold: #4f8fd8;
+  /* Same full-width frame as the admin workspace. */
+  width: 100%;
+  min-width: 0;
+  padding: 30px var(--workspace-sidebar-inset, 22px) 64px;
+}
+/* Contact hero: a house photo filling the viewport, with the copy and frosted-glass panels on top. */
+.lead-page { padding-top: 20px; padding-bottom: 20px; }
+.lead-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  /* The form column grows with the screen (about 57:43) so it never looks squeezed on large displays. */
+  grid-template-columns: minmax(0, 1fr) minmax(420px, .75fr);
+  gap: 20px;
+  min-height: max(640px, calc(100dvh - var(--site-header-height, 80px) - 40px));
+  padding: 20px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2a3442, #12161c);
+  color: #fff;
+}
+.lead-hero-side { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-width: 0; }
+.lead-hero-copy { max-width: 720px; padding: 22px 8px 0; text-shadow: 0 2px 24px #0006; }
+.lead-hero-eyebrow { margin: 0 0 14px; font-size: 11px; font-weight: 500; letter-spacing: 1.8px; color: #ffffffd9; }
+.lead-hero-copy h1 { margin: 0 0 14px; font-size: clamp(36px, 4.1vw, 64px); font-weight: 500; letter-spacing: -1.8px; line-height: 1.12; color: #fff; }
+html[lang="th"] .lead-hero-copy h1 { letter-spacing: -0.4px; line-height: 1.3; font-size: clamp(34px, 3.7vw, 58px); }
+.lead-hero-copy > p:last-child { margin: 0; max-width: 600px; font-size: 16px; line-height: 1.7; color: #ffffffe6; }
+.lead-hero-photo { z-index: -2; object-fit: cover; animation: lead-photo-in .6s ease both; }
+@keyframes lead-photo-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .lead-hero-photo { animation: none; } }
+.lead-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, #0000008c 0%, #0000 42%), linear-gradient(90deg, #00000059 0%, #0000 50%, #0003 100%); pointer-events: none; }
+.lead-glass {
+  border: 1px solid #ffffff2e;
+  border-radius: 18px;
+  background: #1c1f1d73;
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+  box-shadow: 0 30px 80px #0000002e;
+}
+.lead-pill { display: inline-flex; width: fit-content; padding: 5px 12px; border-radius: 999px; background: #ffffff26; font-size: 11px; color: #ffffffe6; }
+
+.lead-process { max-width: 480px; padding: 30px 30px 28px; display: flex; flex-direction: column; gap: 24px; }
+.lead-sentence { margin: 0; font-size: clamp(32px, 3.1vw, 48px); font-weight: 500; line-height: 1.22; letter-spacing: -1px; color: #ffffff4d; }
+html[lang="th"] .lead-sentence { letter-spacing: 0; line-height: 1.4; font-size: clamp(30px, 2.9vw, 44px); }
+.lead-sentence button { border: 0; padding: 0; background: none; font: inherit; letter-spacing: inherit; color: #ffffff8c; cursor: pointer; transition: color .4s; }
+.lead-sentence button:hover { color: #ffffffcc; }
+.lead-sentence button.active { color: #fff; }
+.lead-process > .lead-step-note { margin: 0; padding-top: 14px; border-top: 1px solid #ffffff26; font-size: 13px; line-height: 1.7; color: #ffffffd9; min-height: calc(3.4em + 15px); }
+
+.lead-process-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.lead-process-top .lead-pill { flex-shrink: 0; }
+.lead-people p { white-space: nowrap; }
+.lead-people { display: flex; align-items: center; gap: 10px; }
+.lead-avatars { display: flex; flex-shrink: 0; }
+.lead-avatars img, .lead-avatars span { width: 32px; height: 32px; border-radius: 50%; border: 2px solid #ffffffd9; object-fit: cover; }
+.lead-avatars > * + * { margin-left: -10px; }
+.lead-avatars span { display: grid; place-items: center; background: #fff; color: #1c1f1d; font-size: 14px; font-weight: 600; }
+.lead-people p { margin: 0; display: flex; flex-direction: column; font-size: 11px; line-height: 1.35; color: #ffffffcc; }
+.lead-people strong { font-size: 15px; font-weight: 600; color: #fff; letter-spacing: -.3px; }
+.lead-panel { align-self: stretch; padding: 26px 28px; display: flex; flex-direction: column; gap: 16px; }
+.lead-panel form { display: flex; flex: 1; flex-direction: column; }
+.lead-panel-top { display: flex; flex-direction: column; gap: 14px; margin-bottom: 18px; }
+.lead-examples { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0; padding: 0; border: 0; min-width: 0; }
+.lead-examples legend { float: left; margin-right: 4px; padding: 0; font-size: 11px; color: #ffffffb3; }
+.lead-example { border: 1px solid #ffffff33; border-radius: 999px; padding: 6px 13px; font-size: 12px; background: #ffffff14; color: #fff; cursor: pointer; }
+.lead-example::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; background: var(--lead-cold); }
+.lead-example.hot::before { background: var(--lead-hot); }
+.lead-example.warm::before { background: var(--lead-warm); }
+.lead-example:hover { background: #ffffff29; }
+
+.lead-grid { display: grid; flex: 1; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, auto) 1fr; gap: 12px; }
+.lead-grid .wide { grid-column: 1 / -1; }
+.lead-field { display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: #ffffffe6; }
+.lead-field input, .lead-field textarea { min-width: 0; border: 1px solid #ffffff33; border-radius: 12px; background: #ffffff1a; color: #fff; padding: 11px 14px; font: inherit; font-size: 14px; }
+.lead-field input::placeholder, .lead-field textarea::placeholder { color: #ffffff8c; }
+.lead-field textarea { flex: 1; min-height: 110px; resize: vertical; line-height: 1.6; }
+.lead-field input:focus, .lead-field textarea:focus { outline: 2px solid #ffffffcc; outline-offset: 1px; background: #ffffff26; }
+.lead-hint { margin: -4px 0 0; font-size: 11px; color: #ffffffa6; }
+.lead-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.lead-submit, .lead-light-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 0; border-radius: 12px; background: #fff; color: #1c1f1d; font-size: 13px; font-weight: 500; min-height: 46px; padding: 0 20px; cursor: pointer; }
+.lead-submit { width: 100%; margin-top: 18px; }
+.lead-submit:hover, .lead-light-button:hover { background: #ffffffe0; }
+.lead-submit:disabled { opacity: .7; cursor: progress; }
+.lead-privacy { display: block; margin-top: 10px; font-size: 11px; color: #ffffffa6; text-align: center; }
+.lead-team-link { align-self: center; margin-top: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #ffffffb3; }
+.lead-team-link:hover { color: #fff; }
+
+.lead-result { margin: 14px 0 0; padding: 14px 16px; border-radius: 14px; font-size: 13px; line-height: 1.7; }
+.lead-result.error { color: #b54a4a; background: color-mix(in srgb, #e05a4f 10%, transparent); border: 1px solid color-mix(in srgb, #e05a4f 30%, transparent); }
+.lead-panel .lead-result.error { color: #ffe1dc; background: #e05a4f40; border-color: #ff9d9259; }
+.lead-result.error ul { margin: 0; padding-left: 18px; }
+.lead-result.success { margin: 0; padding: 8px 0; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.lead-result.success h2 { font-size: 24px; line-height: 1.35; margin: 0; letter-spacing: -.5px; }
+.lead-result.success > p { margin: 0; color: #ffffffbf; font-size: 13px; }
+.lead-result-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; color: #fff; background: #32a16d; }
+.lead-auto-reply { margin: 0; padding: 16px 18px; border-radius: 14px; background: #ffffff1a; border: 1px solid #ffffff2e; font-size: 14px; line-height: 1.8; }
+.lead-auto-reply small { display: block; color: #ffffffa6; font-size: 11px; margin-bottom: 4px; }
+
+.leads-heading .admin-secondary:disabled { opacity: .6; cursor: progress; }
+/* Admin stat cards (globals.css), with lead-category accents. */
+.admin-stat.lead-stat { cursor: pointer; }
+.admin-stat.lead-stat.hot { --stat-accent: var(--lead-hot); }
+.admin-stat.lead-stat.warm { --stat-accent: var(--lead-warm); }
+.admin-stat.lead-stat.cold { --stat-accent: var(--lead-cold); }
+.lead-status.hot::before { background: var(--lead-hot); }
+.lead-status.warm::before { background: var(--lead-warm); }
+.lead-status.cold::before { background: var(--lead-cold); }
+.leads-empty { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 48px 20px; color: var(--muted); font-size: 13px; text-align: center; border: 1px dashed var(--border); border-radius: 18px; }
+.leads-empty p { margin: 0; }
+
+.leads-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; }
+.lead-item { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 20px 22px 18px; border: 1px solid var(--border); border-radius: 18px; background: var(--theme-surface, white); overflow: hidden; }
+.lead-item::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--border); }
+.lead-item.hot::before { background: var(--lead-hot); }
+.lead-item.warm::before { background: var(--lead-warm); }
+.lead-item.cold::before { background: var(--lead-cold); }
+.lead-item-top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.lead-item-top time { margin-left: auto; font-size: 11px; color: var(--muted); }
+.lead-badge, .lead-tag { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 500; }
+.lead-badge { color: white; background: var(--muted); }
+.lead-badge.hot { background: var(--lead-hot); }
+.lead-badge.warm { background: var(--lead-warm); }
+.lead-badge.cold { background: var(--lead-cold); }
+.lead-tag { border: 1px solid var(--border); color: var(--muted); font-weight: 400; }
+.lead-tag.repeat { color: var(--blue); border-color: color-mix(in srgb, var(--blue) 35%, transparent); }
+.lead-item h2 { font-size: 17px; margin: 4px 0 0; }
+.lead-contact { margin: 0; font-size: 12px; color: var(--muted); word-break: break-word; }
+.lead-facts { display: flex; gap: 22px; margin: 0; }
+.lead-facts div { display: flex; flex-direction: column; gap: 2px; }
+.lead-facts dt { font-size: 10px; color: var(--muted); letter-spacing: .5px; }
+.lead-facts dd { margin: 0; font-size: 13px; }
+.lead-item blockquote { margin: 0; padding: 12px 14px; border-radius: 12px; background: var(--theme-surface-soft, #f7f8fc); font-size: 13px; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
+.lead-reason { margin: 0; font-size: 12px; line-height: 1.7; color: var(--muted); }
+.lead-reason strong { color: var(--foreground); font-weight: 500; margin-right: 8px; }
+.lead-notifications { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 4px; }
+.lead-note { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; padding: 4px 10px; border-radius: 999px; color: #2f8a5e; background: color-mix(in srgb, #32a16d 12%, transparent); cursor: default; }
+.lead-note.failed { color: #b54a4a; background: color-mix(in srgb, #e05a4f 12%, transparent); }
+.lead-note.muted { color: var(--muted); background: var(--theme-surface-soft, #f7f8fc); }
+.leads-footnote { margin: 18px 0 0; font-size: 11px; color: var(--muted); }
+
+@media (max-width: 960px) {
+  .lead-hero { grid-template-columns: 1fr; align-items: stretch; min-height: 0; padding: 14px; }
+  .lead-hero-side { display: contents; }
+  .lead-hero-copy { min-height: 300px; padding: 12px 6px 0; }
+  .lead-hero-photo { object-position: 30% 40%; height: 520px !important; }
+  .lead-hero::after { background: linear-gradient(180deg, #000000b3 0px, #00000073 250px, #12161c 510px); }
+  .lead-process { max-width: none; order: 2; }
+}
+@media (max-width: 760px) {
+  .lead-page, .leads-page { padding-inline: var(--workspace-content-inset, 22px); }
+}
+@media (max-width: 560px) {
+  .lead-hero { padding: 10px; border-radius: 20px; }
+  .lead-hero-copy { min-height: 250px; }
+  .lead-hero-photo { height: 420px !important; }
+  .lead-hero::after { background: linear-gradient(180deg, #000000b3 0px, #00000073 220px, #12161c 410px); }
+  .lead-panel { padding: 20px 16px; }
+  .lead-process { padding: 18px 18px; }
+  .lead-grid { grid-template-columns: 1fr; }
+  .leads-list { grid-template-columns: 1fr; }
+}
+
+/* Shorter laptop screens: tighten the contact hero so the whole page fits without scrolling. */
+@media (min-width: 961px) and (max-height: 920px) {
+  .lead-hero { min-height: calc(100dvh - var(--site-header-height, 80px) - 40px); padding: 16px; gap: 16px; }
+  .lead-hero-side { gap: 16px; }
+  .lead-hero-copy { padding-top: 10px; }
+  .lead-hero-eyebrow { margin-bottom: 10px; }
+  .lead-hero-copy h1 { font-size: clamp(30px, min(3.5vw, 6.2vh), 56px); margin-bottom: 10px; }
+  .lead-hero-copy > p:last-child { font-size: 14px; }
+  .lead-process { padding: 24px 26px 22px; gap: 18px; }
+  .lead-process > .lead-step-note { font-size: 12px; min-height: calc(3.4em + 15px); }
+  .lead-panel { padding: 18px 22px; gap: 10px; }
+  .lead-panel-top { gap: 10px; margin-bottom: 12px; }
+  .lead-grid { gap: 9px; }
+  .lead-field { gap: 4px; }
+  .lead-field input, .lead-field textarea { padding: 9px 12px; font-size: 13px; }
+  .lead-field textarea { min-height: 64px; }
+  .lead-submit { min-height: 42px; margin-top: 12px; }
+  .lead-privacy { margin-top: 6px; }
+}
+@media (min-width: 961px) and (max-height: 760px) {
+  .lead-hero-copy > p:last-child { display: none; }
+  .lead-process > .lead-step-note { display: none; }
+  .lead-hint { display: none; }
+  .lead-hero-copy h1 { font-size: clamp(26px, 5.3vh, 40px); }
+  .lead-panel-top { margin-bottom: 8px; }
+  .lead-field textarea { min-height: 48px; }
+  .lead-hero { padding: 12px; }
+  .lead-panel { padding: 14px 20px; }
+  .lead-grid { gap: 7px; }
+  .lead-privacy { display: none; }
+}
+
+/* Full-bleed contact hero: the photo runs edge to edge and continues under the liquid-glass header bar. */
+.lead-page { padding: 0; }
+.lead-hero {
+  min-height: max(640px, 100dvh);
+  padding: calc(var(--site-header-height, 80px) + var(--workspace-sidebar-inset, 22px)) var(--workspace-sidebar-inset, 22px) var(--workspace-sidebar-inset, 22px);
+  border-radius: 0;
+}
+@media (min-width: 961px) and (max-height: 920px) {
+  .lead-hero { min-height: 100dvh; padding: calc(var(--site-header-height, 80px) + 16px) var(--workspace-sidebar-inset, 22px) 16px; }
+}
+@media (min-width: 961px) and (max-height: 760px) {
+  .lead-hero { padding-top: calc(var(--site-header-height, 80px) + 12px); padding-bottom: 12px; }
+}
+@media (max-width: 960px) {
+  .lead-hero { min-height: 0; padding: calc(var(--site-header-height, 64px) + 12px) var(--workspace-content-inset, 16px) var(--workspace-content-inset, 16px); }
+}
+@media (max-width: 760px) { .lead-page { padding-inline: 0; } }
+@media (max-width: 560px) { .lead-hero { border-radius: 0; } }
+/* The contact heading breaks after "you" on wide screens; narrow screens wrap naturally. */
+@media (min-width: 961px) { .lead-hero-copy h1 .lead-line { display: block; white-space: nowrap; } }
+
+/* No coloured stripe on the left of lead cards, matching the admin queue; the Hot/Warm/Cold badge carries the colour. */
+.lead-item::before { content: none; }
+
+/* Success screen: centred in the form panel, with a round green check that pops in. */
+.lead-panel .lead-result.success { flex: 1; width: 100%; justify-content: center; align-items: center; text-align: center; gap: 18px; padding: 24px 8px; }
+.lead-result.success h2 { max-width: 460px; font-size: clamp(22px, 2vw, 28px); }
+.lead-result.success > p { max-width: 460px; }
+.lead-result.success .lead-auto-reply { width: min(100%, 520px); text-align: left; }
+.lead-result.success .lead-light-button { margin-top: 4px; min-width: 220px; border-radius: 999px; }
+.lead-result.success .lead-result-icon {
+  width: 76px; height: 76px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #4cc48a, #2b9662);
+  box-shadow: 0 0 0 10px #32a16d2e, 0 0 0 22px #32a16d14, 0 14px 34px #32a16d59;
+  animation: lead-check-in .5s cubic-bezier(.2, .9, .3, 1.3) both;
+  /* Room for the glow rings so they never touch the heading. */
+  margin: 22px 0 20px;
+  flex: none;
+}
+.lead-result.success .lead-result-icon svg { width: 34px; height: 34px; }
+@keyframes lead-check-in { from { transform: scale(.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .lead-result.success .lead-result-icon { animation: none; } }
+
+/* Keep the date on the badge row. */
+.lead-item-top time { white-space: nowrap; }
+.lead-name-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 4px; }
+.lead-name-row h2 { margin: 0; }
+
+/* Equal-height lead cards: every row the same height, message 2 lines, reason 3 lines, "Read more" for the rest. */
+.leads-list { grid-auto-rows: 1fr; }
+.lead-clamp { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.lead-clamp > .clamped { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; width: 100%; box-sizing: border-box; }
+.lead-item .lead-message.clamped { -webkit-line-clamp: 2; line-clamp: 2; min-height: calc(2 * 1.7em + 24px); }
+.lead-item .lead-reason.clamped { -webkit-line-clamp: 3; line-clamp: 3; min-height: calc(3 * 1.7em); }
+.lead-item blockquote.lead-message { white-space: normal; }
+.lead-more { border: 0; background: none; padding: 0; font: inherit; font-size: 12px; font-weight: 500; color: var(--blue); cursor: pointer; }
+.lead-more:hover, .lead-more:focus-visible { text-decoration: underline; }
+.lead-note-button { border: 0; font: inherit; font-size: 11px; cursor: pointer; }
+.lead-note-button:hover, .lead-note-button:focus-visible { filter: brightness(1.15); }
+
+/* "Read more" popup. */
+/* Centred in the viewport (the site reset removes the browser default margin). */
+.lead-dialog { position: fixed; inset: 0; margin: auto; height: fit-content; width: min(560px, calc(100vw - 32px)); max-height: min(80vh, 760px); padding: 0; border: 1px solid var(--border); border-radius: 20px; background: var(--theme-surface, #fff); color: var(--foreground); box-shadow: 0 30px 80px #00000059; }
+.lead-dialog::backdrop { background: #0000008c; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.lead-dialog-body { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 24px 26px 26px; }
+.lead-dialog-body h2 { font-size: 20px; margin: 4px 40px 0 0; }
+.lead-dialog-body h3 { margin: 10px 0 0; font-size: 11px; font-weight: 500; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); }
+.lead-dialog-body .lead-item-top { padding-right: 40px; }
+.lead-dialog-body blockquote { margin: 0; padding: 12px 14px; border-radius: 12px; background: var(--theme-surface-soft, #f7f8fc); font-size: 14px; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
+.lead-dialog-body .lead-reason { font-size: 13px; color: var(--foreground); white-space: pre-wrap; word-break: break-word; }
+.lead-dialog-close { position: absolute; top: 18px; right: 18px; display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 50%; background: transparent; color: var(--foreground); cursor: pointer; }
+.lead-dialog-close:hover, .lead-dialog-close:focus-visible { background: var(--theme-surface-soft, #f7f8fc); }
+.leads-more { display: flex; justify-content: center; margin-top: 18px; }
+
+/* Not-sent screen: the success layout in red, with the reasons and an "Edit and try again" button. */
+.lead-panel .lead-result.failure { flex: 1; width: 100%; margin: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 18px; padding: 24px 8px; background: none; border: 0; color: inherit; font-size: 14px; line-height: 1.7; }
+.lead-result.failure h2 { max-width: 460px; margin: 0; font-size: clamp(22px, 2vw, 28px); line-height: 1.35; letter-spacing: -.5px; }
+.lead-result.failure > p { max-width: 440px; margin: 0; color: #ffffffbf; }
+.lead-result.failure .lead-reasons { margin: 0; padding: 14px 18px; list-style: none; border-radius: 14px; background: #ffffff1a; border: 1px solid #ffffff2e; color: #ffffffd9; text-align: left; display: grid; gap: 4px; }
+.lead-result.failure .lead-light-button { margin-top: 4px; min-width: 220px; border-radius: 999px; }
+.lead-result.failure .lead-result-icon {
+  width: 76px; height: 76px; border-radius: 50%; margin: 22px 0 20px; flex: none;
+  background: radial-gradient(circle at 35% 30%, #f07a6f, #c9453a);
+  box-shadow: 0 0 0 10px #e05a4f2e, 0 0 0 22px #e05a4f14, 0 14px 34px #e05a4f59;
+  animation: lead-check-in .5s cubic-bezier(.2, .9, .3, 1.3) both;
+}
+.lead-result.failure .lead-result-icon svg { width: 30px; height: 30px; }
+@media (prefers-reduced-motion: reduce) { .lead-result.failure .lead-result-icon { animation: none; } }
+/* The quick inline check (no phone or email) sits flush, without list indentation. */
+.lead-panel .lead-result.error { padding: 12px 16px; }
+
+/* Filter bar under the stat cards: search, property type, clear. */
+.leads-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 18px 0 14px; }
+.leads-search { flex: 1 1 320px; display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--theme-surface, #fff); color: var(--muted); }
+.leads-search:focus-within { border-color: var(--blue); }
+.leads-search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--foreground); font: inherit; font-size: 13px; }
+.leads-select { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 6px 0 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--theme-surface, #fff); font-size: 12px; color: var(--muted); }
+.leads-select select { border: 0; outline: 0; background: transparent; color: var(--foreground); font: inherit; font-size: 13px; padding: 8px 4px; cursor: pointer; }
+.leads-select:focus-within { border-color: var(--blue); }
+.leads-clear { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; border: 0; border-radius: 12px; background: none; color: var(--muted); font: inherit; font-size: 12px; cursor: pointer; }
+.leads-clear:hover, .leads-clear:focus-visible { color: var(--foreground); background: var(--theme-surface-soft, #f7f8fc); }
+@media (max-width: 560px) { .leads-select { flex: 1 1 100%; justify-content: space-between; } }
+
+/* Hot / warm / cold buttons in the filter bar. */
+.leads-segment { display: inline-flex; gap: 4px; min-height: 44px; padding: 4px; border: 1px solid var(--border); border-radius: 12px; background: var(--theme-surface, #fff); }
+.leads-segment button { display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; border: 0; border-radius: 9px; background: none; color: var(--muted); font: inherit; font-size: 13px; cursor: pointer; white-space: nowrap; }
+.leads-segment button small { font-size: 11px; opacity: .7; }
+.leads-segment button:hover, .leads-segment button:focus-visible { color: var(--foreground); background: var(--theme-surface-soft, #f7f8fc); }
+.leads-segment button.active { color: #fff; background: #111318; }
+:root[data-theme="dark"] .leads-segment button.active { background: #000; box-shadow: inset 0 0 0 1px #ffffff1f; }
+.leads-segment-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lead-cold); }
+.leads-segment .hot .leads-segment-dot { background: var(--lead-hot); }
+.leads-segment .warm .leads-segment-dot { background: var(--lead-warm); }
+@media (max-width: 560px) { .leads-segment { flex: 1 1 100%; } .leads-segment button { flex: 1; justify-content: center; padding: 0 6px; } }
+/* One focus ring only: the outer box lights up, so the field inside drops the site-wide focus shadow (as on the AI search box). */
+.leads-search input:focus-visible, .leads-select select:focus-visible { outline: none; box-shadow: none; }
+.leads-search:focus-within, .leads-select:focus-within { border-color: #8a9bf2; box-shadow: none; }
+
+/* Very narrow phones: like the admin chat link, Open contact form stays (Refresh goes; the list reloads every 20 seconds). */
+@media (max-width: 379px) { .admin-page-heading.leads-heading .workspace-heading-actions > .leads-contact-link { display: inline-flex; } }
+
+/* Popup: where a (simulated) message was logged for, or why it was not sent. */
+.lead-delivery { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: -2px 0 8px; font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.lead-delivery.failed { color: #b54a4a; }
+.lead-delivery small { flex-basis: 100%; color: var(--muted); }
