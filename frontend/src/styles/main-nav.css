@@ -1,0 +1,69 @@
+/* Header navigation: black pill for the current page and on hover.
+   On wide screens with a mouse, icons show for the current page and slide in on hover or keyboard focus.
+   Touch devices and the collapsed ☰ menu keep their icons. */
+.main-nav a { transition: background-color .2s, color .2s, box-shadow .2s; }
+.main-nav a:is(:hover, :focus-visible, .active),
+[data-theme="rainbow"] .main-nav a.active {
+  color: #fff;
+  background: #111318;
+  box-shadow: 0 2px 8px #0000001f;
+}
+:root[data-theme="dark"] .main-nav a:is(:hover, :focus-visible, .active) {
+  background: #000;
+  box-shadow: inset 0 0 0 1px #ffffff1f;
+}
+@media (hover: hover) and (min-width: 1441px) {
+  .site-header .main-nav a { gap: 0; }
+  .site-header .main-nav a > svg {
+    width: 0;
+    margin-right: 0;
+    opacity: 0;
+    transition: width .25s ease, margin-right .25s ease, opacity .2s ease;
+  }
+  .site-header .main-nav a:is(:hover, :focus-visible, .active) > svg {
+    width: 17px;
+    margin-right: 8px;
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .main-nav a, .site-header .main-nav a > svg { transition: none; }
+}
+
+/* Wide screens: the nav sits at the true centre of the page (lined up with the page content).
+   The decorative "Workspace" pill is hidden below 1800px so the right-hand controls do not crowd the nav. */
+@media (min-width: 1441px) {
+  .site-header { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); column-gap: 24px; }
+  .site-header .main-nav { justify-self: center; }
+}
+@media (min-width: 1441px) and (max-width: 1799px) {
+  .site-header .header-right .preview-pill { display: none; }
+}
+
+/* Contact: the header floats over a full-bleed photo with a liquid-glass nav. */
+.site-header.over-hero { position: absolute; top: 0; left: 0; right: 0; background: transparent; border-bottom-color: transparent; }
+/* Liquid-glass nav and theme switch while the header floats over the photo. */
+.site-header.over-hero :is(.main-nav, .theme-switch, .compact-theme-switch) {
+  background: linear-gradient(135deg, #ffffff2e 0%, #ffffff0d 55%, #ffffff1f 100%);
+  border: 1px solid transparent;
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
+  box-shadow: inset 0 0 18px #ffffff0f, 0 10px 30px #0000002e;
+}
+:root:not([data-theme="dark"]) .site-header.over-hero :is(.main-nav, .theme-switch, .compact-theme-switch) {
+  background: linear-gradient(135deg, #ffffff9e 0%, #ffffff4d 55%, #ffffff80 100%);
+  border-color: transparent;
+  box-shadow: 0 10px 30px #1e2f5514;
+}
+:root[data-theme="dark"] .site-header.over-hero .main-nav a:not(.active):not(:hover) { color: #ffffffd1; }
+:root[data-theme="dark"] .site-header.over-hero .theme-switch { color: #fff; }
+/* Contact: the whole header bar is liquid glass over the photo. */
+.site-header.over-hero.glass-bar {
+  background: linear-gradient(135deg, #ffffffb8 0%, #ffffff8c 55%, #ffffffa6 100%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-bottom-color: transparent;
+  box-shadow: 0 10px 30px #0000001f;
+}
+:root[data-theme="dark"] .site-header.over-hero.glass-bar { background: linear-gradient(135deg, #12141a99 0%, #12141a66 55%, #12141a8c 100%); }
+:root[data-theme="rainbow"] .site-header.over-hero.glass-bar { background: linear-gradient(135deg, #fbf6ffb8 0%, #fbf6ff8c 55%, #fbf6ffa6 100%); }

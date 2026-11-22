@@ -1,0 +1,6 @@
+/* Shared secondary text for light surfaces, including the rainbow gradients.
+   Dark mode keeps its existing light text palette. */
+:root:not([data-theme="dark"]) {
+  --theme-text: #505c6e;
+  --muted: #505c6e;
+}

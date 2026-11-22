@@ -1,0 +1,130 @@
+.brand {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 41px;
+  height: 44px;
+  border-radius: 13px;
+  color: white;
+  background: #232733;
+  box-shadow: inset 0 2px 2px #ffffff30;
+}
+.brand-second {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.8px;
+}
+.brand-dot {
+  color: var(--blue);
+}
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  background: var(--theme-surface-soft, #f6f7fa);
+  border: 1px solid var(--theme-border, #edf0f5);
+  border-radius: 30px;
+}
+.main-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 22px;
+  color: var(--theme-text, #707789);
+  font-size: 13px;
+  border-radius: 24px;
+}
+.main-nav a.active {
+  color: var(--blue);
+  background: color-mix(in srgb, var(--blue) 14%, var(--theme-surface, white));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--blue) 20%, transparent), 0 2px 6px #1e2f5510;
+  font-weight: 500;
+}
+.main-nav a:hover {
+  color: var(--blue);
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.preview-pill {
+  font-size: 10px;
+  color: var(--theme-text, #7b8191);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.preview-pill > span {
+  width: 6px;
+  height: 6px;
+  background: #97a2bf;
+  border-radius: 100%;
+}
+.language-switch {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 11px;
+  color: var(--theme-text, #9ca1ad);
+}
+.language-switch button {
+  padding: 5px 1px;
+}
+.language-switch .selected {
+  font-weight: 600;
+  color: var(--theme-text, #273046);
+}
+.workspace-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #f57c00;
+  color: #fff;
+  font-weight: 500;
+  border: 0;
+}
+.property-workspace {
+  display: grid;
+  grid-template-columns: var(--workspace-sidebar-width) minmax(0, 1fr);
+  width: 100%;
+  min-width: 0;
+  min-height: calc(100vh - 92px);
+}
+.filter-panel {
+  background: var(--theme-surface, #fff);
+  border-right: 1px solid var(--border);
+  padding: 30px 22px;
+}
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.panel-heading h2 {
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.text-button {
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 5px 0;
+}

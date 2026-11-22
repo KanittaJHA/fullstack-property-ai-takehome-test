@@ -1,0 +1,11 @@
+/* Thai has stacked vowels and tone marks; the wide tracking used for small Latin capitals
+   ("HANDOVER BRIEF") pulls Thai syllables apart ("ส รุ ป"). In Thai, small labels use normal
+   tracking and a slightly larger size so they stay readable. */
+html[lang="th"] :is(.tiny-label, .eyebrow, .conversation-label, .admin-eyebrow, .promo-kicker,
+  .welcome-eyebrow, .knowledge-eyebrow, .knowledge-sidebar-label, .detail-category,
+  .workspace-footer > span:first-child) {
+  letter-spacing: 0;
+}
+html[lang="th"] :is(.admin-eyebrow, .tiny-label, .promo-kicker) {
+  font-size: 11px;
+}

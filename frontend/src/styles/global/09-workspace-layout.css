@@ -1,0 +1,193 @@
+/* One continuous page gradient shows through neutral glass navigation. */
+[data-theme="rainbow"] .site-header,
+[data-theme="rainbow"] .filter-panel,
+[data-theme="rainbow"] .conversation-sidebar,
+[data-theme="rainbow"] .sales-context {
+  background: #ffffff38;
+  -webkit-backdrop-filter: blur(24px) saturate(125%);
+  backdrop-filter: blur(24px) saturate(125%);
+  border-color: var(--border);
+  box-shadow: none;
+}
+[data-theme="rainbow"] .filter-panel .filter-group {
+  border-color: #cfc5e44d;
+}
+[data-theme="rainbow"] .filter-panel select,
+[data-theme="rainbow"] .budget-presets button,
+[data-theme="rainbow"] .bed-options button {
+  background: #ffffff66;
+  border-color: #d9d0eb80;
+  box-shadow: inset 0 1px 0 #ffffffb3;
+}
+[data-theme="rainbow"] .budget-presets .selected,
+[data-theme="rainbow"] .bed-options .selected {
+  background: #ebe0ffb3;
+  border-color: #c6afe880;
+}
+@supports not (backdrop-filter: blur(1px)) {
+  [data-theme="rainbow"] .site-header,
+  [data-theme="rainbow"] .filter-panel,
+  [data-theme="rainbow"] .conversation-sidebar,
+  [data-theme="rainbow"] .sales-context {
+    background: #f7f3fbed;
+  }
+}
+
+[data-theme="rainbow"] .quick-prompts button {
+  color: #69449a;
+  background: linear-gradient(115deg, #fce5f1e6, #ede3fce6 50%, #dfedfbe6);
+  border-color: #cbb6e6;
+  box-shadow: inset 0 1px 0 #ffffffb3, 0 2px 5px #7958a310;
+}
+[data-theme="rainbow"] .quick-prompts button:hover {
+  background: linear-gradient(115deg, #f7d5e9, #e4d4f7 50%, #d3e5fa);
+  border-color: #ac8cd0;
+}
+[data-theme="dark"] .quick-prompts button {
+  color: #e0e0e0;
+  background: #2a2a2a;
+  border-color: #505050;
+}
+[data-theme="dark"] .quick-prompts button:hover {
+  background: #363636;
+  border-color: #737373;
+}
+
+/* Shared horizontal spacing for both workspaces. */
+:root {
+  --workspace-content-inset: 30px;
+  --workspace-sidebar-inset: 22px;
+}
+.property-main { padding-inline: var(--workspace-content-inset); }
+.site-header { padding-inline: var(--workspace-sidebar-inset); }
+.sales-brand { padding-inline: 0; }
+.filter-panel { padding-inline: var(--workspace-sidebar-inset); }
+.chat-heading,
+.chat-demo-banner,
+.chat-compose-area { padding-inline: var(--workspace-content-inset); }
+.chat-thread { padding-inline: var(--workspace-content-inset); }
+.conversation-sidebar,
+.sales-context { padding-inline: var(--workspace-sidebar-inset); }
+@media (min-width: 1650px) {
+  :root { --workspace-content-inset: 40px; }
+}
+@media (max-width: 1200px) {
+  :root {
+    --workspace-content-inset: 22px;
+    --workspace-sidebar-inset: 16px;
+  }
+}
+@media (max-width: 760px) {
+  :root { --workspace-content-inset: 18px; }
+  .site-header { padding-inline: var(--workspace-content-inset); }
+  .conversation-sidebar { padding-inline: var(--workspace-content-inset); }
+}
+
+@media (min-width: 761px) {
+  .property-workspace { --property-top-inset: 24px; }
+  .filter-panel,
+  .property-main { padding-top: var(--property-top-inset); }
+  .search-hero { padding-top: 0; }
+  .filter-panel > .panel-heading,
+  .search-hero > .eyebrow {
+    min-height: 26px;
+    align-items: center;
+  }
+}
+@media (min-width: 1650px) {
+  .property-workspace { --property-top-inset: 24px; }
+}
+@media (min-width: 761px) and (max-width: 1200px) {
+  .property-workspace { --property-top-inset: 22px; }
+}
+
+/* Align the three Graspia header rows on desktop. */
+@media (min-width: 761px) {
+  .sales-workspace { --sales-top-inset: 24px; }
+  .conversation-sidebar,
+  .sales-context,
+  .chat-heading { padding-top: var(--sales-top-inset); }
+  .sales-brand,
+  .sales-context > .panel-heading {
+    min-height: 48px;
+    align-items: center;
+  }
+  .chat-heading { min-height: calc(var(--sales-top-inset) + 48px + 24px + 1px); }
+}
+@media (min-width: 1650px) {
+  .sales-workspace { --sales-top-inset: 24px; }
+}
+@media (min-width: 761px) and (max-width: 1200px) {
+  .sales-workspace { --sales-top-inset: 22px; }
+  .chat-heading { padding-bottom: 24px; }
+}
+
+@media (min-width: 761px) {
+  .sales-brand {
+    height: 48px;
+    flex-shrink: 0;
+    margin-bottom: 25px;
+  }
+  .conversation-sidebar > .primary-button {
+    min-height: 44px;
+    flex-shrink: 0;
+    padding-block: 8px;
+  }
+  .chat-demo-banner {
+    min-height: 44px;
+    flex-shrink: 0;
+    padding-block: 8px;
+  }
+}
+
+[data-theme="dark"] { --online-text: #76daa1; }
+
+/* Conversation queues keep actionable handovers ahead of assistant-led chats. */
+.scenario-list { gap: 22px; padding-bottom: 24px; }
+.conversation-group { min-width: 0; }
+.conversation-group-heading {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 8px 10px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.conversation-group-dot {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #c59a57;
+}
+.assistant .conversation-group-dot { background: #32b76b; }
+.conversation-group-count {
+  display: grid;
+  place-items: center;
+  min-width: 21px;
+  height: 21px;
+  margin-left: auto;
+  padding-inline: 5px;
+  border-radius: 7px;
+  background: var(--theme-surface-soft, #f0f2f7);
+  color: var(--foreground);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.conversation-group .conversation-item { padding: 8px 10px; align-items: flex-start; }
+.conversation-item-copy { min-width: 0; }
+.conversation-group .conversation-item small { margin-top: 0; }
+.conversation-group .conversation-item.active {
+  border-color: color-mix(in srgb, var(--blue) 35%, var(--border));
+  box-shadow: inset 3px 0 0 var(--blue);
+}
+@media (max-width: 760px) {
+  .scenario-list { gap: 18px; padding-bottom: 8px; }
+  .conversation-group { flex: 0 0 auto; }
+  .conversation-group-heading { margin-inline: 3px; }
+  .conversation-group-count { margin-left: 3px; }
+  .conversation-group .conversation-item { width: 230px; }
+}
+

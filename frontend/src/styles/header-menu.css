@@ -1,0 +1,3 @@
+/* The open header menu must sit above page controls that share the header's z-index
+   (e.g. the start screen's model pill, info button and its tip). */
+.site-header:has(.header-menu.is-open) { z-index: 60; }

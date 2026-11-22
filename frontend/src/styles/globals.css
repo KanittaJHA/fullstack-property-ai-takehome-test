@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+/* Global styles, split by area. The order matters: later files refine earlier ones. */
+@import "./global/01-base.css"; /* Design tokens, Tailwind theme mapping and element defaults. */
+@import "./global/02-header.css"; /* Brand, main navigation and header controls. */
+@import "./global/03-property-search.css"; /* Property filters, search hero, suggestions and sorting. */
+@import "./global/04-property-cards.css"; /* Property cards and the property detail panel. */
+@import "./global/05-footer-and-states.css"; /* Workspace footer, demo notices, matching progress and image fallbacks. */
+@import "./global/06-sales-workspace.css"; /* Graspia sales chat: sidebar, thread, composer and context panel. */
+@import "./global/07-responsive.css"; /* Thai typography and the responsive layouts for all workspaces. */
+@import "./global/08-readability-and-themes.css"; /* Readable text sizes and the dark and rainbow themes. */
+@import "./global/09-workspace-layout.css"; /* Shared workspace spacing, Graspia header rows and conversation queues. */
+@import "./global/10-admin-inbox.css"; /* Admin inbox, sidebar cards and collapsible conversation groups. */
+@import "./global/11-chat-welcome.css"; /* Graspia welcome screen and its decorative motion. */
+@import "./global/12-navigation-responsive.css"; /* Header and navigation at tablet and phone widths. */
+@import "./global/13-shared-panels.css"; /* Knowledge page, scroll indicators, team page actions, rainbow surfaces and dialogs. */

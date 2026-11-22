@@ -1,0 +1,256 @@
+/* Shared business knowledge preview. */
+.knowledge-page { max-width:1440px; margin:0 auto; padding:48px var(--workspace-content-inset) 88px; }
+.knowledge-page-heading { display:flex; justify-content:space-between; align-items:center; gap:24px; margin-bottom:28px; }
+.knowledge-eyebrow { color:var(--blue); font-size:11px; letter-spacing:2px; margin:0 0 16px; }
+.knowledge-page-heading h1 { font-size:clamp(28px,3.5vw,46px); letter-spacing:-1.5px; line-height:1.2; margin:0 0 14px; }
+.knowledge-page-heading > div > p:last-child { color:var(--muted); margin:0; }
+.knowledge-page-heading > a { flex-shrink:0; display:inline-flex; align-items:center; gap:12px; }
+.knowledge-source { display:flex; gap:14px; padding:20px 24px; background:var(--note-gradient,var(--theme-surface,white)); border:1px solid var(--border); border-radius:18px; margin-bottom:24px; }
+.knowledge-source > svg { flex-shrink:0; color:var(--blue); }
+.knowledge-source strong { font-size:14px; font-weight:500; }
+.knowledge-source p { margin:6px 0; color:var(--muted); font-size:13px; line-height:1.7; }
+.knowledge-source small { color:var(--muted); font-size:11px; }
+.knowledge-search { display:flex; align-items:center; gap:12px; padding:14px 18px; border:1px solid var(--border); border-radius:14px; background:var(--theme-surface,white); color:var(--muted); }
+.knowledge-search:focus-within { border-color:var(--blue); }
+.knowledge-search input { flex:1; min-width:0; outline:0; border:0; background:transparent; color:var(--foreground); font-size:14px; }
+.knowledge-search button { display:grid; place-items:center; border:0; background:transparent; color:var(--muted); cursor:pointer; }
+.knowledge-results { font-size:12px; color:var(--muted); margin:14px 0 20px; }
+.knowledge-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+.knowledge-card { padding:26px; border:1px solid var(--border); border-radius:20px; background:var(--theme-surface,white); min-width:0; }
+.knowledge-section-title { display:flex; gap:12px; align-items:center; margin-bottom:22px; color:var(--blue); }
+.knowledge-section-title h2 { font-size:18px; font-weight:500; color:var(--foreground); margin:0; }
+.knowledge-card h3 { margin:0 0 10px; font-size:16px; font-weight:500; }
+.knowledge-card p,.knowledge-card li { color:var(--muted); font-size:14px; line-height:1.8; }
+.knowledge-card small { color:var(--muted); }
+.knowledge-card dl { margin:20px 0 0; font-size:13px; }
+.knowledge-card dt { color:var(--muted); margin-top:14px; }
+.knowledge-card dd { margin:4px 0 0; }
+.knowledge-card ol,.knowledge-card ul { padding-left:22px; margin:0 0 20px; }
+.knowledge-card li { padding-left:5px; margin-bottom:12px; }
+.knowledge-card li::marker { color:var(--blue); }
+.knowledge-human { background:var(--note-gradient,var(--theme-surface,white)); }
+.knowledge-wide { grid-column:1 / -1; }
+.knowledge-packages { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.knowledge-packages article { padding:22px; background:var(--theme-surface-soft,#f6f7fa); border-radius:14px; border:1px solid var(--border); }
+.knowledge-price { display:block; font-size:27px; font-weight:500; color:var(--blue); }
+.knowledge-card .knowledge-footnote { font-size:12px; margin:20px 0 0; }
+.knowledge-empty { padding:50px 20px; text-align:center; color:var(--muted); }
+.knowledge-empty h2 { color:var(--foreground); font-size:22px; }
+@media (max-width:768px) {
+ .knowledge-page { padding-top:28px; }
+ .knowledge-page-heading { align-items:flex-start; flex-direction:column; }
+ .knowledge-grid,.knowledge-packages { grid-template-columns:minmax(0,1fr); }
+ .knowledge-card { padding:20px; }
+ .knowledge-source { padding:18px; }
+}
+
+/* Shared workspace sidebar geometry for Knowledge base. */
+.knowledge-page { max-width: none; width: 100%; margin: 0; padding: 0; }
+.knowledge-layout { display: grid; grid-template-columns: var(--workspace-sidebar-width) minmax(0, 1fr); align-items: start; gap: 0; min-height: calc(100dvh - var(--site-header-height, 80px)); }
+.knowledge-content { min-width: 0; width: 100%; padding: 30px var(--workspace-content-inset) 80px; }
+.knowledge-sidebar { position: sticky; top: var(--site-header-height, 80px); padding: 30px var(--workspace-sidebar-inset) 24px; border: 0; border-right: 1px solid var(--border); border-radius: 0; background: var(--theme-surface, white); height: calc(100dvh - var(--site-header-height, 80px)); overflow-y: auto; display: flex; flex-direction: column; min-width: 0; }
+.knowledge-sidebar-brand { display: flex; align-items: center; gap: 12px; padding: 0 0 24px; }
+.knowledge-sidebar-brand > span { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--blue-soft); color: var(--blue); flex-shrink: 0; }
+.knowledge-sidebar-brand strong { display: block; font-size: 15px; font-weight: 500; }
+.knowledge-sidebar-brand small { display: block; color: var(--muted); margin-top: 5px; font-size: 11px; }
+.knowledge-sidebar-label { margin: 0 10px 12px; font-size: 10px; letter-spacing: 1.4px; color: var(--muted); }
+.knowledge-sidebar nav { display: grid; gap: 6px; }
+.knowledge-sidebar nav a, .knowledge-nav-unavailable { display: flex; align-items: center; gap: 10px; padding: 12px 10px; min-height: 46px; border-radius: 11px; font-size: 12px; color: var(--theme-text, #707789); }
+.knowledge-sidebar nav svg { flex-shrink: 0; }
+.knowledge-sidebar nav a > svg:last-child { margin-left: auto; }
+.knowledge-sidebar nav a:hover, .knowledge-sidebar nav a:focus-visible { background: var(--blue-soft); color: var(--blue); }
+.knowledge-nav-unavailable { opacity: .4; }
+.knowledge-sidebar-note { margin-top: 0; padding: 20px 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--note-gradient); }
+.knowledge-sidebar nav { margin-bottom: 32px; }
+.knowledge-sidebar-note > svg { color: var(--blue); margin-bottom: 12px; }
+.knowledge-sidebar-note strong { display: block; font-size: 13px; font-weight: 500; }
+.knowledge-sidebar-note p { font-size: 12px; line-height: 1.8; color: var(--muted); margin: 8px 0 12px; }
+.knowledge-sidebar-note small { color: var(--muted); font-size: 10px; }
+.knowledge-card { scroll-margin-top: calc(var(--site-header-height, 80px) + 24px); }
+.knowledge-card:target { border-color: var(--blue); }
+@media (min-width: 769px) and (max-width: 1100px) {
+
+ .knowledge-page-heading { flex-direction: column; align-items: flex-start; }
+ .knowledge-grid, .knowledge-packages { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 768px) {
+ .knowledge-layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
+ .knowledge-sidebar { position: static; height: auto; max-height: none; padding: 18px var(--workspace-content-inset); overflow: hidden; border-right: 0; border-bottom: 1px solid var(--border); }
+ .knowledge-content { padding-top: 24px; }
+ .knowledge-sidebar-brand { padding-bottom: 14px; }
+ .knowledge-sidebar-label, .knowledge-sidebar-note { display: none; }
+ .knowledge-sidebar nav { display: flex; overflow-x: auto; gap: 8px; padding-bottom: 4px; margin-bottom: 0; }
+ .knowledge-sidebar nav a, .knowledge-nav-unavailable { flex-shrink: 0; white-space: nowrap; background: var(--theme-surface-soft, #f6f7fa); }
+ .knowledge-sidebar nav a > svg:last-child { display: none; }
+}
+
+/* Team identity above the shared knowledge note. */
+.knowledge-sidebar-footer { margin-top: auto; display: grid; gap: 20px; flex-shrink: 0; }
+.knowledge-team-account { margin-top: 0; padding: 22px 4px 4px; }
+@media (max-width: 768px) { .knowledge-sidebar-footer { display: none; } }
+
+/* Consistent auto-hiding scroll indicators across workspaces. */
+html, :root[data-theme="dark"] { scrollbar-width: none; scrollbar-gutter: auto; }
+html::-webkit-scrollbar { display: none; }
+.site-header::after { content: none; }
+:is(.conversation-sidebar, .chat-thread, .sales-context, .scenario-list, .admin-messages, .admin-queue-list, .knowledge-sidebar, textarea) { scrollbar-width: none !important; }
+:is(.conversation-sidebar, .chat-thread, .sales-context, .scenario-list, .admin-messages, .admin-queue-list, .knowledge-sidebar, textarea)::-webkit-scrollbar { display: none; }
+.workspace-scroll-thumb { position: fixed; z-index: 45; width: 6px; height: 80px; border-radius: 999px; background: var(--scrollbar-thumb, #b8bbc3); opacity: 0; pointer-events: none; touch-action: none; transition: opacity 180ms ease; }
+.workspace-scroll-thumb[data-visible="true"] { opacity: 1; pointer-events: auto; cursor: grab; }
+.workspace-scroll-thumb:active { cursor: grabbing; }
+@media (prefers-reduced-motion: reduce) { .workspace-scroll-thumb { transition: none; } }
+
+/* Filters use the shared auto-hiding scroll indicator. */
+.filter-panel { scrollbar-width: none; }
+.filter-panel::-webkit-scrollbar { display: none; }
+
+/* Shared actions for the protected team pages. */
+.workspace-heading-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; flex-shrink: 0; }
+.workspace-heading-actions > a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+@media (max-width: 1100px) { .workspace-heading-actions { flex-shrink: 1; } }
+/* Button labels stay on one line; on small screens the admin and lead pages switch some buttons to icons instead. */
+.workspace-heading-actions :is(.admin-secondary, .primary-button) { white-space: nowrap; }
+/* Tablets: the actions move under the title in one row instead of squeezing beside it. */
+@media (max-width: 1100px) { .admin-page-heading { flex-direction: column; align-items: flex-start; } }
+
+
+
+/* Match the chat link to the lock button's dimensions. */
+.knowledge-page-heading .workspace-heading-actions .primary-button {
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.knowledge-page-heading .workspace-heading-actions .admin-secondary { line-height: 1.5; }
+@media (min-width: 1650px) {
+  .knowledge-page-heading .workspace-heading-actions .primary-button { font-size: 13px; }
+}
+.knowledge-page-heading .workspace-heading-actions .primary-button { min-height: 0; }
+.knowledge-page-heading .workspace-heading-actions .primary-button > svg { width: 16px; height: 16px; }
+
+.admin-page-heading .workspace-heading-actions > form { order: 0; }
+
+/* Consistent Rainbow surfaces across workspace sidebars and knowledge cards. */
+[data-theme="rainbow"] .knowledge-sidebar {
+  background: #ffffff38;
+  -webkit-backdrop-filter: blur(24px) saturate(125%);
+  backdrop-filter: blur(24px) saturate(125%);
+  border-color: var(--border);
+  box-shadow: none;
+}
+[data-theme="rainbow"] .knowledge-card:not(.knowledge-human) {
+  background: #ffffff85;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  [data-theme="rainbow"] .knowledge-sidebar { background: #f7f3fbed; }
+}
+.knowledge-page-heading > div > p:last-child { font-size: 14px; line-height: 1.7; }
+
+/* One shared soft lavender surface for every Rainbow sidebar. */
+:root[data-theme="rainbow"] { --workspace-sidebar-surface: #f7f3fc; }
+[data-theme="rainbow"] :is(.filter-panel, .conversation-sidebar, .sales-context, .knowledge-sidebar, .admin-queue) {
+  background: var(--workspace-sidebar-surface);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+/* Shared lavender backgrounds for Rainbow property cards and details. */
+[data-theme="rainbow"] :is(.property-card, .detail-panel) {
+  background: var(--workspace-sidebar-surface, #f7f3fc);
+}
+[data-theme="rainbow"] .property-detail-dialog,
+[data-theme="rainbow"] .property-detail-dialog .detail-topline {
+  background: var(--workspace-sidebar-surface, #f7f3fc);
+}
+/* Sidebar surface rules must not remove the compact drawer's page dimming. */
+@media (max-width: 760px) {
+  [data-theme="rainbow"] .filter-panel.mobile-open,
+  [data-theme="rainbow"] .sales-context.context-open {
+    box-shadow: 0 0 0 100vmax var(--overlay-backdrop);
+  }
+}
+
+/* Welcome composer and suggestions match the shared lavender surface. */
+[data-theme="rainbow"] .is-welcome .chat-compose,
+[data-theme="rainbow"] .welcome-suggestions button {
+  background: var(--workspace-sidebar-surface, #f7f3fc);
+}
+[data-theme="rainbow"] .welcome-suggestions button:hover {
+  background: #eee7f8;
+}
+
+/* Keep AI explanations bounded; show full text in a keyboard-accessible dialog. */
+.property-card > .card-reason {
+  margin: 0 var(--card-content-inset) 14px;
+  font-size: 11px;
+  text-align: left;
+}
+.match-reason > svg { flex-shrink: 0; }
+.match-reason-content { min-width: 0; flex: 1; }
+.match-reason-body {
+  height: calc(5.1em + 22px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.match-reason-body > * { flex-shrink: 0; }
+.match-reason .match-reason-preview {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+  max-height: 5.1em;
+  margin: 0;
+}
+.match-reason-action { height: 22px; display: flex; align-items: end; }
+.match-reason-action .text-button { font-size: 10px; padding: 2px 0; }
+.match-reason-action .text-button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.match-reason-dialog {
+  margin: auto;
+  padding: 0;
+  width: min(560px, calc(100vw - 32px));
+  max-height: min(80dvh, 640px);
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--theme-surface, white);
+  color: var(--theme-text, #303746);
+  box-shadow: 0 24px 80px #0006;
+  text-align: left;
+}
+.match-reason-dialog::backdrop { background: var(--overlay-backdrop); backdrop-filter: blur(3px); }
+.match-reason-dialog-content { padding: 24px; }
+.match-reason-dialog header { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
+.match-reason-dialog header h2 { font-size: 18px; margin: 0; }
+.match-reason-dialog header button { flex-shrink: 0; font-size: 24px; }
+.match-reason-dialog .match-reason-dialog-content h3 { font-size: 14px; margin: 16px 0 12px; }
+.match-reason-dialog .match-reason-dialog-content p { font-size: 14px; line-height: 1.85; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
+
+/* Live sales history sizes to its actual conversations. */
+
+.admin-queue .admin-chat-group-items { height: auto; align-content: start; }
+
+.conversation-row { position: relative; min-width: 0; }
+.conversation-sidebar .conversation-row .conversation-item { padding-right: 44px; }
+.conversation-more { position: absolute; top: 8px; right: 4px; width: 36px; height: 36px; border-radius: 8px; font-size: 24px; }
+.conversation-more:hover, .conversation-more[aria-expanded="true"] { background: var(--theme-surface-soft, #f0f3ff); }
+.conversation-actions { padding: 4px; margin-top: 4px; border: 1px solid var(--border); border-radius: 10px; }
+.conversation-actions button { width: 100%; min-height: 44px; padding: 8px 12px; text-align: left; color: var(--foreground); border-radius: 6px; }
+.conversation-actions button:hover { background: var(--theme-surface-soft, #f0f3ff); }
+
+/* Compact customer history: titles, not internal identifiers or queue states. */
+.conversation-history { display: grid; gap: 2px; min-width: 0; }
+.conversation-sidebar .conversation-history .conversation-item { min-height: 32px; padding: 6px 44px 6px 12px; border: 0; border-radius: 8px; box-shadow: none; }
+.conversation-history .conversation-item-copy { display: block; width: 100%; min-width: 0; }
+.conversation-sidebar .conversation-history .conversation-item strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; line-height: 18px; font-weight: 400; }
+.conversation-history .conversation-more { top: 0; height: 32px; font-size: 21px; }
+.conversation-history .conversation-item.active { box-shadow: none; border-left: 0; }
+
+

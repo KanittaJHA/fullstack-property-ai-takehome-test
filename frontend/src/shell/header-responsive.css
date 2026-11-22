@@ -1,0 +1,38 @@
+/* Dropdown navigation must not inherit desktop grid placement or centering. */
+@media (max-width: 768px) {
+  .site-header .header-menu {
+    right: 12px;
+    width: min(320px, calc(100vw - 24px));
+    padding: 12px;
+    border-radius: 16px;
+  }
+  .site-header .header-menu.is-open {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .site-header .header-menu > .main-nav {
+    grid-column: 1;
+    grid-row: auto;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: stretch;
+    justify-items: stretch;
+    justify-self: stretch;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+  .site-header .header-menu .main-nav a {
+    width: 100%;
+    min-width: 0;
+    justify-content: flex-start;
+    white-space: normal;
+    padding: 10px 12px;
+    line-height: 1.5;
+  }
+  .site-header .header-menu > .header-right {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: stretch;
+    padding: 12px 12px 2px;
+  }
+}

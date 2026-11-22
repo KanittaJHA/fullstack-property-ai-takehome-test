@@ -1,0 +1,104 @@
+
+:root {
+  --workspace-sidebar-width: 278px;
+  --overlay-backdrop: #0006;
+  --background: var(--theme-surface-soft, #f8f9fc);
+  --foreground: #20252f;
+  --blue: #3e56df;
+  --blue-soft: #eef1ff;
+  --muted: #7b8191;
+  --border: var(--theme-border, #e9ecf2);
+}
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-poppins), var(--font-thai), sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins), var(--font-thai), sans-serif;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button,
+a,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    color 0.18s,
+    border-color 0.18s,
+    transform 0.18s;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+button,
+input,
+select {
+  outline: none;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #8a9bf280;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+svg {
+  flex-shrink: 0;
+}
+.skip-link {
+  position: fixed;
+  left: 10px;
+  top: -100px;
+  z-index: 100;
+  background: var(--theme-surface, white);
+  padding: 15px;
+}
+.skip-link:focus {
+  top: 10px;
+}
+.site-header {
+  min-height: 92px;
+  background: var(--theme-surface, #fff);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 36px;
+  position: relative;
+  z-index: 20;
+}

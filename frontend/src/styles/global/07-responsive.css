@@ -1,0 +1,456 @@
+html[lang="th"] :is(.search-hero, .admin-page-heading) h1 {
+  letter-spacing: -0.6px;
+  font-size: clamp(28px, 2.9vw, 42px);
+}
+html[lang="th"] .tiny-label,
+html[lang="th"] .eyebrow,
+html[lang="th"] .conversation-label {
+  letter-spacing: 0.3px;
+}
+@media (min-width: 1650px) {
+  body {
+    font-size: 14px;
+  }
+  .property-main {
+    padding: 37px 40px;
+  }
+  :root {
+    --workspace-sidebar-width: 300px;
+  }
+  .card-content h3 {
+    font-size: 14px;
+  }
+  .card-location {
+    font-size: 11px;
+  }
+  .card-facts {
+    font-size: 11px;
+  }
+  .card-bottom strong {
+    font-size: 18px;
+  }
+  .detail-body {
+    padding: 24px;
+  }
+}
+@media (max-width: 1200px) {
+  .site-header {
+    padding: 18px 22px;
+    gap: 14px;
+  }
+  .preview-pill {
+    display: none;
+  }
+  :root {
+    --workspace-sidebar-width: 240px;
+  }
+  .filter-panel {
+    padding: 25px 16px;
+  }
+  .property-main {
+    padding: 26px 22px;
+  }
+  .property-results {
+    grid-template-columns: minmax(0, 1fr) 285px;
+    gap: 15px;
+  }
+  .listing-grid {
+    gap: 12px;
+  }
+  .card-image-wrap {
+    height: 145px;
+  }
+  .card-facts {
+    gap: 6px;
+    font-size: 8px;
+  }
+  .card-bottom strong {
+    font-size: 13px;
+  }
+  .card-content h3 {
+    font-size: 11px;
+  }
+  .detail-body {
+    padding: 17px 15px;
+  }
+  .detail-body h2 {
+    font-size: 17px;
+  }
+  .detail-price {
+    font-size: 24px;
+  }
+  .sales-workspace {
+    grid-template-columns: var(--workspace-sidebar-width) minmax(0, 1fr) var(--workspace-sidebar-width, 278px);
+  }
+  .conversation-sidebar {
+    padding: 26px 13px 16px;
+  }
+  .sales-context {
+    padding: 26px 16px;
+  }
+  .chat-heading {
+    padding: 22px;
+  }
+  .chat-thread {
+    padding: 22px;
+  }
+  .chat-compose-area {
+    padding: 15px 20px;
+  }
+}
+@media (max-width: 1050px) {
+  .property-results {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .card-image-wrap {
+    height: 200px;
+  }
+  .card-content h3 {
+    font-size: 13px;
+  }
+  .card-facts {
+    font-size: 10px;
+    gap: 12px;
+  }
+  .card-bottom strong {
+    font-size: 17px;
+  }
+  .detail-panel {
+    display: none;
+  }
+  .mobile-detail-close {
+    display: flex;
+    margin-left: auto;
+  }
+  .detail-image {
+    height: 230px;
+  }
+  .sales-workspace {
+    grid-template-columns: var(--workspace-sidebar-width) minmax(0, 1fr);
+    position: relative;
+  }
+  .sales-context {
+    display: none;
+  }
+  .sales-context.context-open {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--workspace-sidebar-width, 278px);
+    max-width: 95vw;
+    z-index: 25;
+    box-shadow: -10px 0 40px #23305120;
+  }
+  .context-toggle {
+    display: flex;
+    margin-left: auto;
+  }
+  .channel-badge {
+    margin-left: 0;
+  }
+  .header-right {
+    gap: 15px;
+  }
+  .main-nav a {
+    padding: 10px 13px;
+  }
+  .sales-note {
+    margin-top: 30px;
+  }
+}
+@media (max-width: 760px) {
+  .site-header {
+    flex-wrap: wrap;
+    min-height: 128px;
+    padding: 15px 20px 10px;
+    gap: 13px;
+  }
+  .brand {
+    font-size: 11px;
+  }
+  .brand-second {
+    font-size: 17px;
+  }
+  .brand-mark {
+    width: 35px;
+    height: 37px;
+  }
+  .header-right {
+    margin-left: auto;
+  }
+  .main-nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+  .main-nav a {
+    flex: 1;
+    font-size: 11px;
+    padding: 9px 10px;
+  }
+  .workspace-avatar {
+    width: 29px;
+    height: 29px;
+    font-size: 11px;
+  }
+  .property-workspace {
+    display: block;
+  }
+  .filter-panel {
+    display: none;
+  }
+  .filter-panel.mobile-open {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 320px;
+    max-width: 90vw;
+    z-index: 50;
+    overflow-y: auto;
+    padding: 25px;
+    box-shadow: 0 0 0 100vmax var(--overlay-backdrop);
+  }
+  .mobile-only,
+  .filter-toggle {
+    display: inline-flex;
+  }
+  .filter-panel .sidebar-note {
+    display: none;
+  }
+  .filter-panel > .primary-button {
+    margin-top: 25px;
+    width: 100%;
+  }
+  .property-main {
+    padding: 25px 18px 15px;
+  }
+  .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.3px;
+  }
+  :is(.search-hero, .admin-page-heading) h1 {
+    font-size: 29px;
+    letter-spacing: -1.1px;
+    margin-top: 12px;
+  }
+  .search-hero > p, .admin-page-heading > div > p:last-child {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  .ai-search {
+    flex-wrap: wrap;
+    gap: 7px;
+    padding: 8px;
+  }
+  .ai-search input {
+    font-size: 11px;
+    min-height: 35px;
+  }
+  .ai-search > .primary-button {
+    width: 100%;
+    min-height: 39px;
+  }
+  .search-spark {
+    margin-left: 4px;
+  }
+  .search-suggestions {
+    font-size: 9px;
+    gap: 5px;
+  }
+  .result-tabs {
+    gap: 15px;
+  }
+  .result-tabs button {
+    font-size: 10px;
+    gap: 5px;
+  }
+  .sort-control > span {
+    display: none;
+  }
+  .sort-control select {
+    max-width: 92px;
+    font-size: 9px;
+  }
+  .results-toolbar {
+    gap: 8px;
+  }
+  .results-caption {
+    font-size: 9px;
+  }
+  .card-image-wrap {
+    height: 180px;
+  }
+  .card-content h3 {
+    font-size: 11px;
+    min-height: 36px;
+  }
+  .card-facts {
+    font-size: 8px;
+    gap: 7px;
+  }
+  .card-bottom strong {
+    font-size: 14px;
+  }
+  .card-bottom > span {
+    font-size: 7px;
+  }
+  .card-location {
+    font-size: 8px;
+  }
+  .property-card {
+    --card-content-inset: 3px;
+  }
+  .card-content {
+    padding: 10px var(--card-content-inset) 4px;
+  }
+  .type-badge {
+    font-size: 8px;
+    padding: 4px 7px;
+    left: 8px;
+    top: 8px;
+  }
+  .save-button {
+    width: 27px;
+    height: 27px;
+    top: 14px;
+    right: 14px;
+  }
+  .workspace-footer {
+    line-height: 1.8;
+  }
+  .sales-workspace {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+  .conversation-sidebar {
+    padding: 15px 18px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+    overflow: visible;
+  }
+  .sales-brand {
+    display: none;
+  }
+  .conversation-sidebar > .primary-button {
+    align-self: flex-start;
+    width: auto;
+    padding: 8px 13px;
+    min-height: 35px;
+    font-size: 10px;
+  }
+  .conversation-label {
+    margin: 16px 0 8px;
+  }
+  .scenario-list {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 7px;
+    padding-bottom: 2px;
+  }
+  .conversation-item {
+    min-width: 193px;
+    padding: 10px 8px;
+  }
+  .conversation-item strong {
+    font-size: 9px;
+  }
+  .sales-note,
+  .connected-business {
+    display: none;
+  }
+  .chat-panel {
+    min-height: 580px;
+    height: calc(100dvh - 190px);
+  }
+  .chat-heading {
+    padding: 17px 19px;
+  }
+  .chat-thread {
+    padding: 20px 16px;
+  }
+  .chat-heading h2 {
+    font-size: 15px;
+  }
+  .chat-demo-banner {
+    padding: 10px 16px;
+    font-size: 8px;
+  }
+  .message-bubble {
+    font-size: 11px;
+    padding: 12px 14px;
+  }
+  .chat-compose-area {
+    padding: 13px 16px;
+  }
+  .compose-note {
+    font-size: 7px;
+    text-align: center;
+  }
+  .sales-context.context-open {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 13px;
+    box-shadow: 0 0 0 100vmax var(--overlay-backdrop);
+    z-index: 40;
+  }
+}
+@media (max-width: 400px) {
+  .property-card {
+    --card-content-inset: 7px;
+  }
+  .listing-grid {
+    grid-template-columns: 1fr;
+  }
+  .card-image-wrap {
+    height: 220px;
+  }
+  .card-content {
+    padding: 12px var(--card-content-inset) 5px;
+  }
+  .card-content h3 {
+    font-size: 13px;
+    min-height: 0;
+  }
+  .card-facts {
+    font-size: 10px;
+  }
+  .card-bottom strong {
+    font-size: 17px;
+  }
+  .result-tabs {
+    gap: 8px;
+  }
+  .result-tabs button {
+    font-size: 9px;
+  }
+  :is(.search-hero, .admin-page-heading) h1 {
+    font-size: 26px;
+  }
+  .brand {
+    gap: 7px;
+  }
+  .header-right {
+    gap: 10px;
+  }
+  .workspace-avatar {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
