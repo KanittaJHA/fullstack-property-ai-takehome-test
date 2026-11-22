@@ -1,0 +1,29 @@
+{
+  "name": "takehome-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env.local --import tsx --watch src/server.ts",
+    "build": "tsc",
+    "start": "node --env-file-if-exists=.env.local dist/backend/src/server.js",
+    "typecheck": "tsc --noEmit",
+    "test": "node tests/unit/check-matching.mjs && node --import tsx --test tests/unit/*.test.ts",
+    "check": "npm run typecheck && npm test",
+    "test:listings": "node tests/integration/check-listings.mjs",
+    "test:business": "node --env-file=.env.local tests/integration/check-business-profile.mjs",
+    "test:matching:live": "node tests/integration/check-matching-live.mjs",
+    "test:chat:live": "node --env-file=.env.local --import tsx tests/integration/check-chat-live.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.118.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "tsx": "^4.20.0",
+    "typescript": "^5"
+  }
+}
