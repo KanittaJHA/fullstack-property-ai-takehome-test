@@ -10,6 +10,8 @@ A bilingual (English / Thai) full-stack implementation of the take-home tasks:
 
 <sub>The home page (dark theme). Photos are illustrative, from Unsplash.</sub>
 
+**Live demo:** [fullstack-property-ai-takehome-test.vercel.app](https://fullstack-property-ai-takehome-test.vercel.app). The frontend runs on Vercel and the backend on Render's free plan, which sleeps when idle: the first request after a quiet spell can take up to a minute while it wakes. Details: [Deployment](#deployment).
+
 **Reading guide:** this page covers setup, the design of each task and how it was tested. Each task has a detailed guide, listed under [Documentation](#documentation).
 
 Stack: Next.js 16 (frontend) · Node.js + TypeScript HTTP API (backend) · Supabase PostgreSQL · n8n Cloud (Task 3) · Gemini (Claude and OpenAI adapters included). What each part uses and why: [Tech stack](#tech-stack).
@@ -106,6 +108,25 @@ If something does not work:
 | Tests | `node:test` and `node:assert` (backend and workflow), Playwright with Chrome (browser), SQLite via `node:sqlite` (chat tests run offline, without Supabase) | No extra test framework to install; `npm run check` runs offline with no AI cost |
 | Code quality | ESLint 9 (Next.js rules plus import boundaries), a project structure check (`scripts/check-architecture.mjs`), EditorConfig | Browser code cannot import server code or database clients, and each kind of file stays in its place |
 | Photos | Unsplash, illustrative only | Free-licence photos for listings and the home page; they do not show the real properties |
+| Hosting | Vercel (frontend), Render (backend), both on free plans | Vercel builds Next.js with no configuration; the backend is a long-running Node server, which suits Render's web services. See [Deployment](#deployment) |
+
+## Deployment
+
+| Part | Host | Address |
+|---|---|---|
+| Frontend | Vercel (Hobby) | [fullstack-property-ai-takehome-test.vercel.app](https://fullstack-property-ai-takehome-test.vercel.app) |
+| Backend | Render web service (Free, Singapore) | `https://fullstack-property-ai-takehome-test.onrender.com` (API only; health check at [`/health`](https://fullstack-property-ai-takehome-test.onrender.com/health)) |
+| Database | Supabase | Not public; reached only by the backend |
+| Automation | n8n Cloud | Called by the backend for contact-form leads (Task 3) |
+
+The browser talks only to Vercel. Next.js forwards `/api`, `/listings` and `/match` to the backend (`BACKEND_URL`), so the backend accepts requests from a single origin and no key reaches the browser.
+
+**Settings used** (secrets are set in each host's dashboard, never in the repository):
+
+- **Vercel:** Root Directory `frontend`, framework Next.js, one variable `BACKEND_URL` set to the Render address.
+- **Render:** Root Directory `backend`, build `npm ci --include=dev && npm run build` (devDependencies hold TypeScript and the Node types needed to compile), start `npm start`, health check `/health`. Variables as in [`backend/.env.example`](backend/.env.example), with `NODE_ENV=production`, `HOST=0.0.0.0`, `FRONTEND_ORIGIN` set to the Vercel address, and no `PORT` (Render sets it).
+
+**Free-plan limits:** the Render service sleeps after inactivity, so the first request can take up to a minute. The Task 1 cache and the rate limits live in memory and reset when it restarts. The team pages (`/admin`, `/leads`, `/knowledge`) need the access code, which is not published.
 
 ## Architecture
 
