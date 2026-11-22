@@ -63,7 +63,7 @@ Minimum values for `backend/.env.local` (all options are documented in [backend/
 Notes for a first run:
 
 - **Supabase keys:** Supabase dashboard → Project Settings → API Keys. `SUPABASE_URL` is the project URL, `SUPABASE_PUBLISHABLE_KEY` the publishable key, `SUPABASE_SECRET_KEY` a secret key. The secret key stays in `backend/.env.local` only.
-- **AI model:** `.env.example` fills in each provider's most capable model, which may need a paid key. To run exactly what was tested on a free Gemini key, set `GEMINI_MODEL=gemini-3.5-flash-lite` (or leave it empty).
+- **AI key and model:** paste your own key after the `=` and leave unused keys empty (placeholder text would be sent to the provider and rejected). `.env.example` already sets `GEMINI_MODEL=gemini-3.5-flash-lite`, the tested model, which works with a free Gemini key. The OpenAI and Claude models it fills in are each provider's most capable model and may need a paid key.
 - **Admin values:** `ADMIN_ACCESS_CODE` is any 8 characters you choose and is the code you type on `/admin` and `/leads`; generate `ADMIN_SESSION_SECRET` with `openssl rand -hex 32`.
 - **Without n8n:** Tasks 1 and 2 run without Task 3. Leave the two `N8N_` values empty and the contact form answers "unavailable"; nothing else is affected.
 - Restart `npm run dev` after editing `.env.local`.

@@ -190,9 +190,12 @@ and restart the backend:
 | 1 — property matching | `AI_PROVIDER` | `gemini` · `openai` · `anthropic` | `GEMINI_MODEL` (`gemini-3.5-flash-lite`) · `OPENAI_MODEL` (`gpt-4.1-mini`) · `ANTHROPIC_MODEL` (`claude-haiku-4-5`) |
 | 2 — sales chat | `CHAT_AI_PROVIDER` | `gemini` · `openai` · `anthropic` | the same model variables, or `CHAT_MODEL` for chat only |
 
-Keys: `GEMINI_API_KEY`, `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`. The defaults in brackets apply when a model variable is empty;
-`.env.example` fills in each provider's most capable model instead (`gemini-4-argon`, `gpt-6.2-astra`, `claude-opus-5-5`),
-which may need a paid key. This project was tested on `gemini-3.5-flash-lite`. For example, to run both tasks on Claude:
+Keys: `GEMINI_API_KEY`, `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`; paste your own key and leave unused ones empty
+(placeholder text is sent to the provider and rejected). The defaults in brackets apply when a model variable is empty.
+`.env.example` sets `GEMINI_MODEL=gemini-3.5-flash-lite`, the model this project was tested on, which works with a free
+Gemini key; for OpenAI and Claude it fills in each provider's most capable model (`gpt-6.2-astra`, `claude-opus-5-5`),
+which may need a paid key. A more capable Gemini model such as `gemini-4-argon` may also need a paid key.
+For example, to run both tasks on Claude:
 
 ```env
 AI_PROVIDER=anthropic
