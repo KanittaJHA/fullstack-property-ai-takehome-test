@@ -1,0 +1,21 @@
+/* Conversation status card (customer side panel). Accents match the in-chat status events:
+   blue while a specialist is helping, green once the conversation is closed. */
+.status-card.human,
+.status-card.closed {
+  background: color-mix(in srgb, var(--theme-surface-soft, #f6f7fb) 88%, var(--card-accent));
+  border-color: color-mix(in srgb, var(--theme-border, #e4e8f0) 60%, var(--card-accent));
+  color: var(--card-accent);
+}
+.status-card.human { --card-accent: #6387df; }
+.status-card.closed { --card-accent: #32a16d; }
+.status-card.human strong,
+.status-card.closed strong { color: var(--theme-text, #3d4657); }
+.status-card.human small,
+.status-card.closed small { color: var(--muted); }
+
+/* Staff replies: a person icon on a soft blue disc, distinct from the assistant's sun. */
+.message-avatar.staff-avatar {
+  border-radius: 50%;
+  color: #6387df;
+  background: color-mix(in srgb, var(--theme-surface, white) 82%, #6387df);
+}

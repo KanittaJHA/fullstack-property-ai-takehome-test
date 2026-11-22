@@ -1,0 +1,96 @@
+.handover-event {
+  display: flex;
+  align-items: flex-start;
+  align-self: flex-start;
+  /* One fixed width in every language (EN wraps instead of stretching); same as /admin. */
+  width: min(100%, 440px);
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--theme-surface, white) 94%, #d99a2b);
+  border: 1px solid color-mix(in srgb, var(--theme-border, #e9edf3) 80%, #d99a2b);
+  margin: 16px 0;
+}
+.handover-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #c28a2f;
+}
+.handover-event h3 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--foreground);
+}
+.handover-event p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--theme-text, #687286);
+  margin: 3px 0 6px;
+}
+.handover-event time {
+  display: block;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--theme-text, #687286);
+}
+
+.sales-system-event {
+  --event-accent: #8490a3;
+  display: flex;
+  align-items: flex-start;
+  align-self: flex-start;
+  gap: 10px;
+  width: fit-content;
+  max-width: 88%;
+  padding: 10px 14px;
+  border: 1px solid color-mix(in srgb, var(--theme-border, #e9edf3) 65%, var(--event-accent));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--theme-surface, white) 91%, var(--event-accent));
+  color: var(--theme-text, #505c6e);
+}
+.sales-system-event.waiting { --event-accent: #c28a2f; }
+.sales-system-event.active { --event-accent: #6387df; }
+.sales-system-event.resolved { --event-accent: #32a16d; }
+.sales-system-event > svg { flex-shrink: 0; margin-top: 2px; color: var(--event-accent); }
+.sales-system-event-label { font-size: 11px; font-weight: 500; }
+.sales-system-event p { margin: 3px 0 0; font-size: 13px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.sales-system-event > div { min-width: 0; }
+@media (max-width: 760px) {
+  .sales-system-event { max-width: 96%; }
+}
+
+.sales-system-event time { display: block; margin-top: 6px; font-size: 11px; color: var(--muted); }
+
+/* A closed conversation ends the timeline with a quiet, centered notice. */
+.sales-system-event.resolved {
+  align-self: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 8px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--theme-text, #a9b0bc);
+  text-align: center;
+}
+.sales-system-event.resolved > svg,
+.sales-system-event.resolved .sales-system-event-label {
+  display: none;
+}
+.sales-system-event.resolved p,
+.sales-system-event.resolved time {
+  margin: 0;
+  color: inherit;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.sales-system-event.resolved time {
+  display: block;
+  margin-top: 4px;
+}

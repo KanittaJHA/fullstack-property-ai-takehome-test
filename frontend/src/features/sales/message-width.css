@@ -1,0 +1,8 @@
+/* Same bubble width as /admin (720px cap). The customer chat column is narrower than the admin
+   one, so a percentage cap alone made customer bubbles visibly narrower. */
+.message-content {
+  max-width: min(88%, 720px);
+}
+@media (max-width: 760px) {
+  .message-content { max-width: 85%; }
+}

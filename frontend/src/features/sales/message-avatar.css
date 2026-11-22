@@ -1,0 +1,8 @@
+.message-avatar.customer-avatar {
+  border-radius: 50%;
+  background: #f57c00;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+}

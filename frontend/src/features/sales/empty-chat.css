@@ -1,0 +1,256 @@
+/* Fit the landing page to the available viewport; scroll only when needed. */
+.sales-workspace.is-welcome { height: calc(100dvh - var(--site-header-height, 92px)); min-height: 0; }
+.sales-workspace.is-welcome .chat-panel {
+  min-height: 0;
+  overflow-y: auto;
+  justify-content: safe center;
+  padding-block: clamp(20px, 3vh, 42px);
+  scrollbar-width: thin;
+  scrollbar-gutter: auto;
+}
+.sales-workspace.is-welcome .graspia-welcome { flex-shrink: 0; }
+@media (min-width: 761px) and (max-height: 900px) {
+  .is-welcome .welcome-orb { width: 64px; height: 64px; margin-bottom: 12px; }
+  .is-welcome .welcome-eyebrow { margin-bottom: 12px; }
+  .is-welcome .graspia-welcome h1 { font-size: clamp(30px, 3.4vw, 44px); }
+  .is-welcome .welcome-actions { margin-top: 18px; }
+  .is-welcome .chat-compose-area { margin-top: 20px; }
+  .is-welcome .chat-compose { height: 128px; min-height: 128px; }
+  .is-welcome .welcome-suggestions { margin-block: 12px 16px; }
+}
+
+/* Equal space above and below the welcome action row. */
+.sales-workspace.is-welcome { --welcome-action-gap: 36px; }
+.sales-workspace.is-welcome .welcome-actions { margin-top: var(--welcome-action-gap); }
+.sales-workspace.is-welcome .chat-compose-area { margin-top: var(--welcome-action-gap); }
+@media (max-height: 900px), (max-width: 760px) {
+  .sales-workspace.is-welcome { --welcome-action-gap: 28px; }
+}
+
+.sales-workspace.is-welcome .chat-compose { height: 166px; min-height: 166px; }
+@media (min-width: 761px) and (max-height: 900px) {
+  .sales-workspace.is-welcome .chat-compose { height: 144px; min-height: 144px; }
+}
+
+.is-welcome .welcome-compose-tools > button {
+  width: 128px;
+  justify-content: center;
+}
+@media (max-width: 760px) {
+  .is-welcome .welcome-compose-tools > button { width: 108px; }
+}
+
+.is-welcome .compose-note { padding-top: 8px; }
+
+/* New conversation shares the welcome content while retaining its history. */
+.sales-workspace.is-new-chat { grid-template-columns: var(--workspace-sidebar-width, 278px) minmax(0, 1fr); }
+.is-new-chat > .conversation-sidebar { display: flex; }
+@media (max-width: 760px) {
+  .sales-workspace.is-new-chat { grid-template-columns: minmax(0, 1fr); height: auto; min-height: calc(100dvh - var(--site-header-height, 80px)); }
+}
+
+.sales-workspace.is-welcome .chat-demo-banner { display: flex; flex-shrink: 0; width: min(100%, 800px); margin-bottom: 16px; }
+
+/* Keep the toggle available when history is collapsed. */
+.sales-workspace { position: relative; }
+.conversation-sidebar-toggle { position: absolute; top: 8px; left: calc(var(--workspace-sidebar-width, 278px) - 46px); z-index: 10; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 8px; background: var(--theme-surface, #fff); color: var(--foreground); border: 1px solid var(--border); }
+.sales-workspace:not(.is-landing) .conversation-brand { margin-top: 22px; }
+.sales-workspace.sidebar-collapsed > .conversation-sidebar { display: none; }
+.sales-workspace.sidebar-collapsed { grid-template-columns: minmax(0, 1fr) var(--workspace-sidebar-width, 278px); }
+.sales-workspace.is-new-chat.sidebar-collapsed { grid-template-columns: minmax(0, 1fr); }
+.sidebar-collapsed .conversation-sidebar-toggle { left: 12px; }
+.sidebar-collapsed .chat-heading { padding-left: 60px; }
+@media (max-width: 1100px) {
+  .sales-workspace.sidebar-collapsed { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  .conversation-sidebar-toggle { left: auto; right: 16px; }
+  .sidebar-collapsed .conversation-sidebar-toggle { left: 12px; right: auto; }
+}
+
+.sales-workspace:not(.is-landing) .conversation-brand { margin-top: 0; }
+.conversation-brand > div { flex: 1; min-width: 0; }
+.conversation-title-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.conversation-title-row .conversation-sidebar-toggle { position: static; flex-shrink: 0; width: 30px; height: 30px; }
+.conversation-title-row h1 { min-width: 0; }
+
+/* Collapsed navigation remains a compact, usable icon rail. */
+/* Rail width centres its icons under the 43px header logo, which sits one sidebar inset from the edge. */
+.sales-workspace { --icon-rail-width: calc(var(--workspace-sidebar-inset, 22px) * 2 + 43px); }
+.sales-workspace.sidebar-collapsed { grid-template-columns: var(--icon-rail-width) minmax(0, 1fr) var(--workspace-sidebar-width, 278px); }
+.sales-workspace.is-new-chat.sidebar-collapsed { grid-template-columns: var(--icon-rail-width) minmax(0, 1fr); }
+.conversation-icon-rail { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 18px 8px; border-right: 1px solid var(--border); background: var(--theme-surface, #fff); }
+.conversation-icon-rail > button { position: static; display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; color: var(--foreground); }
+.conversation-icon-rail > button:hover { background: var(--theme-surface-soft, #f0f3ff); }
+.sidebar-collapsed .chat-heading { padding-left: 30px; }
+@media (max-width: 1100px) {
+  .sales-workspace.sidebar-collapsed { grid-template-columns: var(--icon-rail-width) minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  .sales-workspace.sidebar-collapsed { grid-template-columns: 52px minmax(0, 1fr); }
+  .conversation-icon-rail { padding-inline: 6px; }
+}
+
+.sales-workspace.is-new-chat .chat-panel { background: var(--theme-surface-soft, #fafbfd); }
+
+.sales-workspace .conversation-sidebar .conversation-history .conversation-item strong { font-size: 11px; line-height: 18px; }
+
+.sales-workspace .conversation-sidebar .conversation-history .conversation-item { min-height: 32px; padding-block: 6px; }
+.sales-workspace .conversation-history .conversation-more { top: 0; height: 32px; font-size: 16px; }
+
+.conversation-show-more { width: 100%; min-height: 32px; margin-top: 4px; padding: 6px 12px; border-radius: 8px; font-size: 11px; color: var(--foreground); }
+.conversation-show-more:hover { background: var(--theme-surface-soft, #f0f3ff); }
+
+/* Balance the visible title-to-button gap, including the last row’s text inset. */
+.conversation-history-controls { display: flex; gap: 8px; padding-top: 14px; padding-bottom: 26px; }
+.conversation-history-controls .conversation-show-more { margin-top: 0; border: 1px solid var(--border); }
+
+.sales-workspace .conversation-sidebar .scenario-list:has(.conversation-history-controls) { gap: 0; padding-bottom: 0; }
+.sales-workspace .conversation-sidebar .scenario-list:has(.conversation-history-controls) + .sidebar-cards { margin-top: 0; padding-top: 0; }
+
+.sales-workspace .conversation-sidebar { --sidebar-button-font-size: 11px; }
+.sales-workspace .conversation-sidebar > .primary-button,
+.sales-workspace .conversation-sidebar .conversation-show-more { font-size: var(--sidebar-button-font-size); font-weight: 500; }
+@media (max-width: 760px) {
+  .sales-workspace .conversation-sidebar { --sidebar-button-font-size: 10px; }
+}
+
+.conversation-actions-popover { position: fixed; z-index: 140; width: 160px; margin: 0; padding: 5px; background: var(--theme-surface, #fff); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 8px 24px #0003; }
+.conversation-actions-popover button { display: flex; align-items: center; gap: 10px; min-height: 38px; padding: 8px 10px; border: 0; background: transparent; color: #dc2626; font-size: 12px; font-weight: 400; }
+.conversation-actions-popover button:hover, .conversation-actions-popover button:focus-visible { background: #ef444414; }
+[data-theme="dark"] .conversation-actions-popover { background: #282828; }
+[data-theme="dark"] .conversation-actions-popover button { color: #ff6262; }
+
+.new-chat-context-toggle,
+.new-chat-top-actions .chat-history-toggle { position: absolute; top: 16px; right: 18px; z-index: 20; display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 10px; color: var(--foreground); background: var(--theme-surface, #fff); box-shadow: 0 2px 8px #0001; }
+.new-chat-context-toggle:hover,
+.new-chat-top-actions .chat-history-toggle:hover { background: var(--theme-surface-soft, #fafbfd); }
+.sales-workspace.is-new-chat > .sales-context.context-open { display: block; position: absolute; inset: 0 0 0 auto; width: var(--workspace-sidebar-width, 278px); max-width: calc(100% - 16px); z-index: 25; overflow-y: auto; box-shadow: -10px 0 40px #0002; }
+.sales-workspace.is-new-chat > .sales-context .context-toggle { display: flex; margin-left: auto; }
+
+.context-heading-copy { min-width: 0; }
+.context-heading-copy p { margin: 6px 0 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+.sales-workspace.is-new-chat > .sales-context { padding-top: 20px; }
+.sales-workspace.is-new-chat > .sales-context > .panel-heading { align-items: flex-start; min-height: 0; margin-bottom: 20px; gap: 12px; }
+.sales-workspace.is-new-chat > .sales-context .context-toggle { flex-shrink: 0; }
+
+.sales-context > .panel-heading { align-items: flex-start; }
+.context-heading-copy h2 { min-height: 30px; margin: 0; align-items: center; }
+
+/* Active conversations can release the space occupied by the details panel. */
+.sales-workspace > .sales-context .context-toggle { display: flex; flex-shrink: 0; margin-left: auto; }
+.sales-workspace.context-collapsed > .sales-context { display: none; }
+.sales-workspace.context-collapsed { grid-template-columns: var(--workspace-sidebar-width, 278px) minmax(0, 1fr); }
+.sales-workspace.context-collapsed.sidebar-collapsed { grid-template-columns: var(--icon-rail-width) minmax(0, 1fr); }
+ .sales-workspace.context-collapsed .chat-heading .chat-details-toggle { display: inline-flex; }
+.chat-heading .chat-details-toggle { order: 2; margin-left: 4px; width: 38px; height: 38px; flex-shrink: 0; border: 1px solid var(--border); border-radius: 10px; }
+.chat-heading .channel-badge { margin-left: auto; }
+/* No bar behind the heading: its controls float over the conversation background. */
+.chat-heading { background: transparent; border-bottom: 0; }
+/* Business name and status read as one compact block. */
+:is(.chat-heading, .drawer-chat-identity) h2 { line-height: 1.25; }
+:is(.chat-heading, .drawer-chat-identity) p { margin-top: 1px; }
+/* Without the bar the dark avatar tile would match the chat background; lift it slightly. */
+[data-theme="dark"] :is(.chat-heading, .drawer-chat-identity) .sun-avatar.large { background: #ffffff14; }
+/* The channel badge matches the 38px buttons beside it on every screen size. */
+.chat-heading .channel-badge { box-sizing: border-box; height: 38px; padding: 0 12px; gap: 7px; border-color: var(--border); border-radius: 10px; font-size: 12px; }
+.chat-heading .channel-badge svg { width: 17px; height: 17px; }
+@media (max-width: 760px) {
+  .sales-workspace.context-collapsed { grid-template-columns: minmax(0, 1fr); }
+  .sales-workspace.context-collapsed.sidebar-collapsed { grid-template-columns: 52px minmax(0, 1fr); }
+}
+
+.new-chat-top-actions { position: absolute; top: 16px; right: 18px; z-index: 20; display: flex; align-items: center; gap: 12px; }
+.new-chat-top-actions :is(.new-chat-context-toggle, .chat-history-toggle) { position: static; }
+.chat-model-label { display: inline-flex; align-items: center; min-height: 38px; padding: 8px 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--theme-surface, #fff); color: var(--muted); font-size: 12px; font-weight: 500; box-shadow: 0 2px 8px #0001; }
+
+/* Desktop and tablet: the promo always starts in the bottom-right corner (it can then be dragged). */
+@media (min-width: 761px) {
+  .sales-workspace.is-new-chat .chat-panel:has(.new-chat-promo) { padding-bottom: 110px; }
+  .sales-workspace .new-chat-promo { position: fixed; right: 20px; bottom: 18px; z-index: 10; margin: 0; }
+}
+
+.chat-info-hint { position: fixed; z-index: 40; display: flex; align-items: flex-start; gap: 10px; width: min(260px, calc(100vw - 24px)); padding: 14px; border: 1px solid var(--border); border-radius: 14px; background: var(--theme-surface, #fff); color: var(--foreground); box-shadow: 0 8px 28px #0002; animation: info-hint-enter 400ms ease-out both; }
+.chat-info-hint::before { content: ""; position: absolute; right: 14px; top: -6px; width: 10px; height: 10px; background: inherit; border-top: 1px solid var(--border); border-left: 1px solid var(--border); transform: rotate(45deg); }
+.chat-info-hint strong { font-size: 12px; font-weight: 600; }
+.chat-info-hint p { margin: 5px 0 0; font-size: 11px; line-height: 1.7; color: var(--muted); }
+.chat-info-hint button { display: grid; place-items: center; flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px; color: var(--muted); }
+.chat-info-hint button:hover { background: var(--blue-soft); }
+@keyframes info-hint-enter { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .chat-info-hint { animation: none; } }
+
+
+.chat-info-hint .hint-info-icon { display: inline-block; vertical-align: -2px; }
+
+
+.conversation-pin { display: inline-flex; flex-shrink: 0; color: var(--blue); }
+.conversation-pin svg,
+.conversation-pin-action svg { transform: rotate(35deg); }
+.conversation-actions-popover .conversation-pin-action { color: var(--foreground); }
+.conversation-actions-popover .conversation-pin-action:hover,
+.conversation-actions-popover .conversation-pin-action:focus-visible { background: var(--blue-soft); }
+
+/* Small screens: conversation history is a slide-in drawer over the chat instead of
+   a block stacked above it. Opened from the chat heading; closed by the backdrop,
+   Escape, its close button, or choosing a conversation. */
+/* The drawer toggle matches the info button beside it: same size, border and surface. */
+.chat-history-toggle { flex-shrink: 0; }
+.chat-heading .chat-history-toggle { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 10px; }
+@media (max-width: 760px) {
+  .sales-workspace > .conversation-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 130;
+    width: min(320px, 86vw);
+    height: 100dvh;
+    padding: 18px var(--workspace-content-inset) 20px;
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+    border-bottom: 0;
+    background: var(--theme-surface, #fff);
+    box-shadow: 12px 0 40px #0003;
+    transform: translateX(-105%);
+    visibility: hidden;
+    transition: transform 220ms ease, visibility 0s linear 220ms;
+  }
+  .sales-workspace.drawer-open > .conversation-sidebar {
+    transform: none;
+    visibility: visible;
+    transition: transform 220ms ease;
+  }
+  .sales-workspace > .conversation-sidebar > .sales-brand { display: flex; margin: 0 0 18px; }
+  .sales-workspace > .conversation-sidebar > .primary-button { align-self: stretch; width: 100%; }
+  .sales-workspace > .conversation-sidebar > .sidebar-cards { grid-template-columns: minmax(0, 1fr); margin-top: auto; padding-top: 24px; }
+  .conversation-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 125;
+    padding: 0;
+    border: 0;
+    background: #0008;
+    cursor: default;
+  }
+  /* New chat: the top row spans the width (history toggle left, model label and info right)
+     and the welcome content starts below it now that history no longer sits above. */
+  .sales-workspace.is-new-chat > .new-chat-top-actions { left: var(--workspace-content-inset); right: var(--workspace-content-inset); justify-content: flex-end; }
+  .new-chat-top-actions .chat-history-toggle { margin-right: auto; }
+  /* Compact chat heading: drawer toggle on the left; channel badge and info button on the right. */
+  /* With history in a drawer, an open chat fills the screen below the site header. */
+  .sales-workspace:not(.is-welcome) > .chat-panel { height: calc(100dvh - var(--site-header-height, 76px)); min-height: 0; }
+  .sales-workspace .compose-note > svg { display: none; }
+  /* In an open chat the floating language button sits above the composer instead of covering it. */
+  .chat-heading { min-height: 64px; padding-block: 12px; }
+  .drawer-chat-identity { display: flex; align-items: center; gap: 12px; flex-shrink: 0; margin: 0 0 16px; padding: 12px; border: 1px solid var(--border); border-radius: 14px; background: var(--theme-surface-soft, #fafbfd); }
+  .drawer-chat-identity .sun-avatar.large { width: 38px; height: 38px; border-radius: 11px; }
+  .drawer-chat-identity .sun-avatar.large svg { width: 22px; height: 22px; }
+  .drawer-chat-identity h2 { font-size: 14px; font-weight: 500; }
+  .drawer-chat-identity p { display: flex; align-items: center; gap: 5px; margin-top: 1px; font-size: 11px; color: var(--theme-text, #8d98a6); }
+  .sales-workspace.is-new-chat .chat-panel { padding-top: 84px; }
+}
+@media (max-width: 760px) and (prefers-reduced-motion: reduce) {
+  .sales-workspace > .conversation-sidebar,
+  .sales-workspace.drawer-open > .conversation-sidebar { transition: none; }
+}
+
+/* Welcome screen fits the viewport; stop 1-3px rounding from showing a scrollbar on taller screens. */
+@media (min-width: 761px) and (min-height: 740px) { .sales-workspace.is-landing .chat-panel { overflow-y: hidden; } }

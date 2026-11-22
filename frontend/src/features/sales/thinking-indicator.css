@@ -1,0 +1,25 @@
+.sales-thinking {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  color: var(--theme-text, #a9b0bc);
+  font-size: 13px;
+}
+.sales-thinking > svg { color: var(--blue); }
+.sales-thinking-text { animation: sales-thinking-glow 1.8s ease-in-out infinite; }
+.sales-thinking-dots { display: inline-flex; gap: 4px; }
+.sales-thinking-dots i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: sales-thinking-bounce 1.2s ease-in-out infinite;
+}
+.sales-thinking-dots i:nth-child(2) { animation-delay: .15s; }
+.sales-thinking-dots i:nth-child(3) { animation-delay: .3s; }
+@keyframes sales-thinking-glow { 50% { opacity: .45; } }
+@keyframes sales-thinking-bounce { 50% { transform: translateY(-4px); opacity: .4; } }
+@media (prefers-reduced-motion: reduce) {
+  .sales-thinking-text, .sales-thinking-dots i { animation: none; }
+}
