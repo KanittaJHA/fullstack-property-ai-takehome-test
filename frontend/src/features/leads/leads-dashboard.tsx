@@ -150,6 +150,8 @@ export function LeadsDashboard() {
         const reply = lead.notifications.find(n => n.kind === "auto_reply");
         const category = lead.classification;
         return <li key={lead.id} className={`lead-item ${category ?? "pending"}`}>
+          {/* Covers the whole card: a click anywhere opens the full details. */}
+          <button type="button" className="lead-open" onClick={() => setOpenId(lead.id)} aria-label={t(`Open details for ${lead.name}`, `เปิดรายละเอียดของ ${lead.name}`)} />
           <div className="lead-item-top">
             <span className={`lead-badge ${category ?? "pending"}`}>{category ? t(...classificationCopy[category].label) : t("Not scored yet", "ยังไม่ได้จัดกลุ่ม")}</span>
             {lead.classificationSource === "rules" && <span className="lead-tag" title={t("The AI was unavailable or unsure, so simple rules decided.", "AI ไม่พร้อมหรือไม่มั่นใจ จึงใช้กฎสำรองตัดสิน")}>{t("Rule-based", "ใช้กฎสำรอง")}</span>}

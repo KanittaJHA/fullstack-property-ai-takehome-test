@@ -322,3 +322,20 @@ html[lang="th"] .lead-sentence { letter-spacing: 0; line-height: 1.4; font-size:
 .lead-delivery { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: -2px 0 8px; font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
 .lead-delivery.failed { color: #b54a4a; }
 .lead-delivery small { flex-basis: 100%; color: var(--muted); }
+
+/* Cards keep name, contact and area to one line each; long values end in "…"; the detail popup shows them in full. */
+li.lead-item .lead-name-row { flex-wrap: nowrap; min-width: 0; }
+li.lead-item .lead-name-row h2,
+li.lead-item .lead-contact,
+li.lead-item .lead-facts dd { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; word-break: normal; }
+li.lead-item .lead-name-row .lead-tag { flex-shrink: 0; }
+li.lead-item .lead-facts,
+li.lead-item .lead-facts div { min-width: 0; }
+li.lead-item .lead-facts div:last-child { flex-shrink: 0; }
+
+/* The whole card opens the detail popup. */
+li.lead-item { transition: border-color .15s ease; }
+li.lead-item:hover { border-color: var(--blue); }
+li.lead-item .lead-open { position: absolute; inset: 0; z-index: 2; padding: 0; border: 0; border-radius: inherit; background: none; cursor: pointer; }
+li.lead-item .lead-open:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+@media (prefers-reduced-motion: reduce) { li.lead-item { transition: none; } }
