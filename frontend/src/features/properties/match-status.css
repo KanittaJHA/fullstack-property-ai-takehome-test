@@ -1,0 +1,28 @@
+.property-match-badge {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 10px;
+  padding: 5px 9px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: normal;
+}
+.property-match-recommended {
+  color: #21583d;
+  background: #eaf6ee;
+}
+.property-match-alternative {
+  color: #794500;
+  background: #fff3d9;
+}
+[data-theme="dark"] .property-match-recommended {
+  color: #bce9ce;
+  background: #20372a;
+}
+[data-theme="dark"] .property-match-alternative {
+  color: #f6d699;
+  background: #3d301d;
+}

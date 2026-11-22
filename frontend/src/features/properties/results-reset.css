@@ -1,0 +1,11 @@
+/* "Reset all" next to the result tabs: back to every listing. */
+.results-reset { display: inline-flex; align-items: center; gap: 7px; margin-left: 4px; padding: 7px 10px; border: 0; border-radius: 999px; background: none; color: var(--foreground); font-size: 12px; cursor: pointer; transition: border-color .2s, opacity .2s; }
+.results-reset:hover:not(:disabled) { color: var(--blue); }
+.results-reset:hover:not(:disabled) svg { transform: rotate(-90deg); }
+.results-reset svg { transition: transform .3s ease; }
+.results-reset:disabled { opacity: .45; cursor: default; }
+@media (prefers-reduced-motion: reduce) { .results-reset svg { transition: none; } }
+@media (max-width: 760px) {
+  .results-reset { margin-left: 0; padding: 7px 9px; }
+  .results-reset-label { display: none; }
+}
