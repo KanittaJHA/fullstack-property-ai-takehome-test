@@ -249,7 +249,9 @@ html[lang="th"] .lead-sentence { letter-spacing: 0; line-height: 1.4; font-size:
 .leads-list { grid-auto-rows: 1fr; }
 .lead-clamp { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
 .lead-clamp > .clamped { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; width: 100%; box-sizing: border-box; }
-.lead-item .lead-message.clamped { -webkit-line-clamp: 2; line-clamp: 2; min-height: calc(2 * 1.7em + 24px); }
+/* Exactly two lines. The 12px top and bottom space is a border in the box colour, not padding:
+   overflow is clipped inside the border, so a third line can never show through at the bottom. */
+.lead-item .lead-message.clamped { -webkit-line-clamp: 2; line-clamp: 2; height: calc(2lh + 24px); padding-block: 0; border-block: 12px solid var(--theme-surface-soft, #f7f8fc); }
 .lead-item .lead-reason.clamped { -webkit-line-clamp: 3; line-clamp: 3; min-height: calc(3 * 1.7em); }
 .lead-item blockquote.lead-message { white-space: normal; }
 .lead-more { border: 0; background: none; padding: 0; font: inherit; font-size: 12px; font-weight: 500; color: var(--blue); cursor: pointer; }
